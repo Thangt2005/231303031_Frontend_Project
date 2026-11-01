@@ -37,11 +37,31 @@ export function parseRssXml(xmlText) {
   });
 }
 
-export async function getBlogPosts(url = `${import.meta.env?.BASE_URL ?? '/'}blog.xml`) {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error('Không tải được bài viết (HTTP ' + response.status + ').');
+// Mỗi lần tải có giới hạn thời gian để nguồn RSS bị treo vẫn chuyển sang dự phòng.
+async function fetchPosts(url) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 8000);
+  try {
+    const response = await fetch(url, { signal: controller.signal });
+    if (!response.ok) throw new Error('Không tải được bài viết (HTTP ' + response.status + ').');
+    return parseRssXml(await response.text());
+  } finally {
+    clearTimeout(timeout);
   }
-  const xmlText = await response.text();
-  return parseRssXml(xmlText);
+}
+
+const localFeed = `${import.meta.env?.BASE_URL ?? '/'}blog.xml`;
+
+export async function getBlogPosts(url = import.meta.env?.VITE_RSS_URL || localFeed) {
+  try {
+    return await fetchPosts(url);
+  } catch (error) {
+    if (url === localFeed) throw error;
+    // Lỗi mạng, CORS, HTTP, timeout hoặc XML đều dùng lại dữ liệu nội bộ.
+    try {
+      return await fetchPosts(localFeed);
+    } catch {
+      throw new Error('Không tải được RSS và dữ liệu Blog dự phòng. Vui lòng thử lại sau.');
+    }
+  }
 }

@@ -72,3 +72,23 @@ test('Không che lỗi HTTP, lỗi mạng và XML lỗi do server trả về', a
   fetchMock.mock.mockImplementation(async () => new Response('<html />'));
   await assert.rejects(getBlogPosts(), /RSS 2.0/);
 });
+
+test('Nguồn ngoài lỗi HTTP, mạng hoặc XML thì đọc file dự phòng', async (context) => {
+  for (const failure of ['http', 'network', 'xml']) {
+    const urls = [];
+    const mock = context.mock.method(globalThis, 'fetch', async (url) => {
+      urls.push(url);
+      if (url === '/blog.xml') return new Response(xml);
+      if (failure === 'network') throw new TypeError('Failed to fetch');
+      return failure === 'http' ? new Response('', { status: 503 }) : new Response('<html />');
+    });
+    assert.equal((await getBlogPosts('https://rss.example/feed')).length, 6);
+    assert.deepEqual(urls, ['https://rss.example/feed', '/blog.xml']);
+    mock.mock.restore();
+  }
+});
+
+test('Báo lỗi khi cả RSS ngoài và dữ liệu dự phòng đều thất bại', async (context) => {
+  context.mock.method(globalThis, 'fetch', async () => new Response('', { status: 404 }));
+  await assert.rejects(getBlogPosts('https://rss.example/feed'), /RSS và dữ liệu Blog dự phòng/);
+});
