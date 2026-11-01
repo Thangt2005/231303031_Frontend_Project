@@ -64,3 +64,7 @@
   .store-footer-columns { grid-template-columns: 1fr; }
   .store-footer-bottom { flex-direction: column; }
 }
+.not-found { max-width: 640px; margin: 32px auto; text-align: center; }
+.not-found-code { margin: 0; font-size: 100px; line-height: 1.2; font-weight: bold; color: #b5151e; }
+.not-found h1 { font-size: 28px; }
+.not-found > a { display: inline-block; margin-top: 20px; font-weight: bold; }
