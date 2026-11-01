@@ -14,7 +14,7 @@
     "sold": 320,
     "featured": true,
     "description": "Thiết kế cổ điển, dễ phối đồ, phù hợp đi học và đi chơi.",
-    "image": "https://picsum.photos/seed/nike-air-force-1/600/600"
+    "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/b7d9211c-26e7-431a-ac24-b0540fb3c00f/AIR+FORCE+1+%2707.png"
   },
   {
     "id": 2,
@@ -31,7 +31,7 @@
     "sold": 410,
     "featured": true,
     "description": "Phong cách retro đặc trưng với thân giày gọn nhẹ và đế cao su.",
-    "image": "https://picsum.photos/seed/adidas-samba-og/600/600"
+    "image": "https://assets.adidas.com/images/h_2000,f_auto,q_auto,fl_lossy,c_fill,g_auto/3bbecbdf584e40398446a8bf0117cf62_9366/Giay_Samba_OG_trang_B75806_01_00_standard.jpg"
   },
   {
     "id": 3,
@@ -48,7 +48,7 @@
     "sold": 275,
     "featured": true,
     "description": "Phom dáng bóng rổ cổ thấp, phối màu trẻ trung và linh hoạt.",
-    "image": "https://picsum.photos/seed/nike-dunk-low/600/600"
+    "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto/9ce2cbad-9509-4c80-ade5-89228743a459/NIKE+DUNK+LOW+RETRO.png"
   },
   {
     "id": 4,
@@ -65,7 +65,7 @@
     "sold": 145,
     "featured": false,
     "description": "Đệm êm và đàn hồi, hỗ trợ thoải mái khi chạy bộ hoặc đi bộ lâu.",
-    "image": "https://picsum.photos/seed/adidas-ultraboost-light/600/600"
+    "image": "https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/59f3f8b61fb146dabf3a48566e6c7fd9_9366/Giay_Ultraboost_5_Mau_xanh_da_troi_ID8817_HM3_hover.jpg"
   },
   {
     "id": 5,
@@ -82,7 +82,7 @@
     "sold": 198,
     "featured": false,
     "description": "Thiết kế thể thao với đệm Air êm ái cho hoạt động hằng ngày.",
-    "image": "https://picsum.photos/seed/nike-air-max-sc/600/600"
+    "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/8bf8448b-1595-4ad8-b872-3aaa5cc489f0/NIKE+AIR+MAX+SC.png"
   },
   {
     "id": 6,
@@ -99,7 +99,7 @@
     "sold": 230,
     "featured": false,
     "description": "Giày phong cách tennis tối giản, phù hợp phối đồ thường ngày.",
-    "image": "https://picsum.photos/seed/adidas-grand-court-2/600/600"
+    "image": "https://assets.adidas.com/images/h_2000,f_auto,q_auto,fl_lossy,c_fill,g_auto/357668abce394993aa7c5484b3078490_9366/GIAY_GRAND_COURT_2.0_trang_ID2978_02_standard_hover.jpg"
   },
   {
     "id": 7,
@@ -116,7 +116,7 @@
     "sold": 520,
     "featured": true,
     "description": "Mẫu giày canvas biểu tượng, dễ kết hợp với nhiều phong cách.",
-    "image": "https://picsum.photos/seed/converse-chuck-taylor/600/600"
+    "image": "https://www.converse.vn/media/catalog/product/cache/3d45c019409e4e20f2cffb6f8fd4d334/0/8/0882-CONM9160C000010-1.jpg"
   },
   {
     "id": 8,
@@ -133,7 +133,7 @@
     "sold": 360,
     "featured": true,
     "description": "Thiết kế sọc jazz đặc trưng, đế waffle bám tốt.",
-    "image": "https://picsum.photos/seed/vans-old-skool/600/600"
+    "image": "https://bizweb.dktcdn.net/thumb/1024x1024/100/140/774/products/vans-old-skool-black-white-vn000d3hy28-1.jpg"
   },
   {
     "id": 9,
@@ -150,7 +150,7 @@
     "sold": 112,
     "featured": false,
     "description": "Thân giày da lộn mềm, kiểu dáng cổ điển đặc trưng.",
-    "image": "https://picsum.photos/seed/puma-suede-classic/600/600"
+    "image": "https://images.puma.com/image/upload/f_auto,q_auto,w_600,b_rgb:FAFAFA/global/404627/04/sv01/fnd/VNM/fmt/png?sw=480&q=60"
   },
   {
     "id": 10,
@@ -167,7 +167,7 @@
     "sold": 285,
     "featured": true,
     "description": "Phom giày retro kết hợp đệm êm, phù hợp sử dụng hằng ngày.",
-    "image": "https://picsum.photos/seed/new-balance-574/600/600"
+    "image": "https://sneakerdaily.vn/wp-content/uploads/2025/07/Giay-New-Balance-Blue-White-GC574BCE.jpg"
   },
   {
     "id": 11,
@@ -184,7 +184,7 @@
     "sold": 176,
     "featured": false,
     "description": "Giày chạy bộ cơ bản, nhẹ và phù hợp cho người mới tập.",
-    "image": "https://picsum.photos/seed/nike-revolution-7/600/600"
+    "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/55cb230b-f009-4885-8e0b-e4651a36fe6c/NIKE+REVOLUTION+7.png"
   },
   {
     "id": 12,
@@ -201,7 +201,7 @@
     "sold": 132,
     "featured": false,
     "description": "Giày thể thao nhẹ, phù hợp chạy bộ nhẹ và tập luyện hằng ngày.",
-    "image": "https://picsum.photos/seed/adidas-duramo-sl-2/600/600"
+    "image": "https://assets.adidas.com/images/h_2000,f_auto,q_auto,fl_lossy,c_fill,g_auto/142b0f990bbf423192963e53129fe31e_9366/Giay_Chay_Bo_Duramo_SL_2_Ngoc_lam_IH8213_04_standard.jpg"
   },
   {
     "id": 13,
@@ -218,7 +218,7 @@
     "sold": 245,
     "featured": false,
     "description": "Giày năng động, trọng lượng nhẹ, phù hợp đi học và di chuyển.",
-    "image": "https://picsum.photos/seed/bitis-hunter-x/600/600"
+    "image": "https://cdn.hstatic.net/products/1000230642/hsw017001xam__3__6ca11f175cc44d988ec990dac5489782.jpg"
   },
   {
     "id": 14,
@@ -235,7 +235,7 @@
     "sold": 189,
     "featured": false,
     "description": "Phong cách đường phố đơn giản, đế nhẹ và dễ mang.",
-    "image": "https://picsum.photos/seed/bitis-hunter-street/600/600"
+    "image": "https://cdn.hstatic.net/products/1000230642/hsm016000trg__1__bde60a8e910442a59957e8d4d26ed3aa.jpg"
   },
   {
     "id": 15,
@@ -252,7 +252,7 @@
     "sold": 158,
     "featured": false,
     "description": "Thiết kế thể thao cá tính với phần đế nổi bật.",
-    "image": "https://picsum.photos/seed/mlb-chunky-liner/600/600"
+    "image": "https://cdn.hstatic.net/products/200000642007/50bks_3asxcl16n_1_eb588b66fba842d8838e9697cdd10f20_f9b2d82075fe492bbf9c66260d3e41bd_master.jpg"
   },
   {
     "id": 16,
@@ -269,7 +269,7 @@
     "sold": 310,
     "featured": false,
     "description": "Dép quai ngang đơn giản, nhanh khô, tiện dùng hằng ngày.",
-    "image": "https://picsum.photos/seed/adidas-adilette-aqua/600/600"
+    "image": "https://assets.adidas.com/images/h_2000,f_auto,q_auto,fl_lossy,c_fill,g_auto/cb1316406e584892bdb3a991001bd46d_9366/Dep_quai_ngang_Adilette_Aqua_DJen_F35543_01_standard.jpg"
   },
   {
     "id": 17,
@@ -286,7 +286,7 @@
     "sold": 205,
     "featured": false,
     "description": "Quai dép mềm và lòng dép có đệm, phù hợp đi lại hằng ngày.",
-    "image": "https://picsum.photos/seed/nike-victori-one/600/600"
+    "image": "https://static.nike.com/a/images/t_web_pdp_535_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/a73abbc4-d1a5-425d-b341-927d4b1ada96/NIKE+VICTORI+ONE+SLIDE.png"
   },
   {
     "id": 18,
@@ -303,7 +303,7 @@
     "sold": 390,
     "featured": true,
     "description": "Dép sục nhẹ, thoáng khí với quai hậu có thể điều chỉnh.",
-    "image": "https://picsum.photos/seed/crocs-classic-clog/600/600"
+    "image": "https://www.crocs.com.vn/cdn/shop/files/10001-7CU-1_1800x1800.jpg?v=1788509906"
   },
   {
     "id": 19,
@@ -320,7 +320,7 @@
     "sold": 98,
     "featured": false,
     "description": "Sandal quai chéo thanh lịch, dễ phối cùng váy và quần jeans.",
-    "image": "https://picsum.photos/seed/sandal-nu-quai-cheo/600/600"
+    "image": "https://img.mwc.com.vn/giay-thoi-trang?w=640&h=640&FileInput=/Resources/Product/2026/10/12/1790696618575_9114488974438559686_g5837531132606070456_15cb6fce43841438d4808722e337f6b0.jpg"
   },
   {
     "id": 20,
@@ -337,6 +337,6 @@
     "sold": 121,
     "featured": false,
     "description": "Sandal quai dán dễ điều chỉnh, phù hợp đi chơi và du lịch.",
-    "image": "https://picsum.photos/seed/sandal-the-thao-quai-dan/600/600"
+    "image": "https://cdn.hstatic.net/products/1000230642/hem001600xdg__7__6a003dde7ed74f54b57f1f7e1528232f.jpg"
   }
 ]
