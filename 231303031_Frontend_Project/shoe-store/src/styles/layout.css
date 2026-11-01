@@ -68,3 +68,5 @@
 .not-found-code { margin: 0; font-size: 100px; line-height: 1.2; font-weight: bold; color: #b5151e; }
 .not-found h1 { font-size: 28px; }
 .not-found > a { display: inline-block; margin-top: 20px; font-weight: bold; }
+.store-compare-link { font-size: 12px; text-decoration: none; white-space: nowrap; }
+.store-compare-link:hover { text-decoration: underline; }
