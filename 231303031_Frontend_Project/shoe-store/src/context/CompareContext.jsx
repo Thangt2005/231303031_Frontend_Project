@@ -19,4 +19,3 @@ export function CompareProvider({ children }) {
 
   return <CompareContext.Provider value={{ selectedProducts, addProduct, removeProduct }}>{children}</CompareContext.Provider>;
 }
-
