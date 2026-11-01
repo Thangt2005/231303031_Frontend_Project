@@ -1,9 +1,13 @@
+import { translate } from '../utils/translations';
+import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { getBlogPosts } from '../services/rssService';
 import '../styles/blog.css';
 
 export default function Blog() {
+  const language = useSelector((state) => state.language);
+  const t = (text) => translate(text, language);
   const [blogList, setBlogList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -21,26 +25,50 @@ export default function Blog() {
       }
     }
     loadBlog();
-    return () => { active = false; };
+    return () => {
+      active = false;
+    };
   }, []);
 
   return (
     <section className="blog-page">
       <p className="page-eyebrow">SHOE STORE JOURNAL</p>
-      <h1>Chuyện về giày</h1>
-      <p className="page-intro">Chọn đôi giày phù hợp. Tìm phong cách của riêng bạn.</p>
-      {loading && <p role="status">Đang tải bài viết...</p>}
-      {error && <p role="alert" className="page-error">{error}</p>}
-      {!loading && !error && blogList.length === 0 && <p>Chưa có bài viết.</p>}
+      <h1>{t("Chuyện về giày")}</h1>
+      <p className="page-intro">{t("Chọn đôi giày phù hợp. Tìm phong cách của riêng bạn.")}</p>
+      {loading && <p role="status">{t("Đang tải bài viết...")}</p>}
+      {error && (
+        <p role="alert" className="page-error">
+          {t(error)}
+        </p>
+      )}
+      {!loading && !error && blogList.length === 0 && <p>{t("Chưa có bài viết.")}</p>}
       <div className="blog-grid">
         {blogList.map((post, index) => (
           <article className="blog-card" key={post.id}>
-            <div className="blog-card-top"><span>{post.category}</span><span>{String(index + 1).padStart(2, '0')}</span></div>
-            <h2><Link to={`/blog/${encodeURIComponent(post.id)}`}>{post.title}</Link></h2>
-            <p>{post.description.length > 170 ? post.description.slice(0, 170) + '…' : post.description}</p>
+            <div className="blog-card-top">
+              <span>{t(post.category)}</span>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+            </div>
+            <h2>
+              <Link to={`/blog/${encodeURIComponent(post.id)}`}>
+                {post.title}
+              </Link>
+            </h2>
+            <p>
+              {post.description.length > 170
+                ? post.description.slice(0, 170) + '…'
+                : post.description}
+            </p>
             <div className="blog-card-bottom">
-              <span>{!Number.isNaN(Date.parse(post.pubDate)) ? new Date(post.pubDate).toLocaleDateString('vi-VN') : 'Chưa có ngày đăng'}</span>
-              <Link to={`/blog/${encodeURIComponent(post.id)}`} aria-label={`Đọc bài: ${post.title}`}>Đọc bài →</Link>
+              <span>
+                {!Number.isNaN(Date.parse(post.pubDate))
+                  ? new Date(post.pubDate).toLocaleDateString(language === 'en' ? 'en-US' : 'vi-VN')
+                  : t('Chưa có ngày đăng')}
+              </span>
+              <Link
+                to={`/blog/${encodeURIComponent(post.id)}`}
+                aria-label={`${language === 'en' ? 'Read article' : 'Đọc bài'}: ${post.title}`}
+              >{t("Đọc bài →")}</Link>
             </div>
           </article>
         ))}

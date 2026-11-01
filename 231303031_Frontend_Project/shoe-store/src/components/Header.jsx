@@ -1,47 +1,158 @@
+import { translate } from '../utils/translations';
 import { useState } from 'react';
-import { Link, NavLink } from 'react-router';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router';
+import '../styles/header.css';
+
+// Danh mục giày dùng trong menu sản phẩm.
+const shoeCategories = [
+  'Giày sneaker',
+  'Giày chạy bộ',
+  'Sandal',
+  'Dép',
+  'Dép sục',
+];
+
+// Danh mục bài viết dùng trong menu Blog.
+const blogCategories = [
+  'Chọn giày',
+  'Phối đồ',
+  'Chăm sóc giày',
+  'Bảo quản',
+  'Kinh nghiệm',
+  'So sánh',
+];
+
+// Tạo đường dẫn danh mục, mã hóa tên tiếng Việt trong URL.
+function makeCategoryLink(path, category) {
+  return path + '?category=' + encodeURIComponent(category);
+}
 
 export default function Header() {
+  const language = useSelector((state) => state.language);
+  const t = (text) => translate(text, language);
+  const compareCount = useSelector((state) => state.compare.length);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const [openCategory, setOpenCategory] = useState('');
+
+  // Mỗi lần chỉ mở một menu danh mục.
+  function toggleCategory(category) {
+    setOpenCategory((currentCategory) => currentCategory === category ? '' : category);
+  }
+
+  // Đóng menu sau khi chọn liên kết.
   function closeMenu() {
     setMenuOpen(false);
+    setOpenCategory('');
   }
 
   return (
     <header className="store-header">
-      <div className="store-topbar">GIAO HÀNG TOÀN QUỐC · HỖ TRỢ ĐỔI SIZE · TỰ TIN TRÊN TỪNG BƯỚC CHÂN</div>
+      <div className="store-topbar">{t("GIAO HÀNG TOÀN QUỐC · HỖ TRỢ ĐỔI SIZE · TỰ TIN TRÊN TỪNG BƯỚC CHÂN")}</div>
+
       <div className="store-container store-header-row">
-        <Link to="/" className="store-brand" onClick={closeMenu}>SHOE STORE</Link>
-        <button className="store-menu-button" type="button" aria-expanded={menuOpen} aria-controls="store-navigation" onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? 'Đóng menu' : 'Menu ☰'}
+        <Link to="/" className="store-brand" onClick={closeMenu}>
+          SHOE STORE
+        </Link>
+
+        <button
+          className="store-menu-button"
+          type="button"
+          aria-expanded={menuOpen}
+          aria-controls="store-navigation"
+          onClick={() => {
+            setMenuOpen(!menuOpen);
+            setOpenCategory('');
+          }}
+        >
+          {menuOpen ? t('Đóng menu') : 'Menu ☰'}
         </button>
-        <nav id="store-navigation" className={`store-nav ${menuOpen ? 'is-open' : ''}`} aria-label="Điều hướng chính">
-          <span className="store-pending" title="Chức năng đang được phát triển">HÀNG MỚI</span>
-          <NavLink to="/products" onClick={closeMenu}>GIÀY</NavLink>
-          <span className="store-pending" title="Chức năng đang được phát triển">THƯƠNG HIỆU</span>
-          <NavLink to="/blog" onClick={closeMenu}>BLOG</NavLink>
-          <span className="store-sale store-pending" title="Chức năng đang được phát triển">SALE</span>
+
+        <nav
+          id="store-navigation"
+          className={`store-nav ${menuOpen ? 'is-open' : ''}`}
+          aria-label={t("Điều hướng chính")}
+          onKeyDown={(event) => {
+            if (event.key === 'Escape') setOpenCategory('');
+          }}
+        >
+          <div className="store-nav-item">
+            <button type="button" className="store-category-button" aria-expanded={openCategory === 'products'} aria-controls="products-submenu" onClick={() => toggleCategory('products')}>{t("GIÀY")}</button>
+
+            <ul id="products-submenu" className="store-submenu" hidden={openCategory !== 'products'}>
+              <li>
+                <Link to="/products" onClick={closeMenu}>{t("Tất cả giày")}</Link>
+              </li>
+
+              {shoeCategories.map((category) => (
+                <li key={t(category)}>
+                  <Link
+                    to={makeCategoryLink('/products', category)}
+                    onClick={closeMenu}
+                  >
+                    {t(category)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="store-nav-item">
+            <button type="button" className="store-category-button" aria-expanded={openCategory === 'blog'} aria-controls="blog-submenu" onClick={() => toggleCategory('blog')}>
+              BLOG
+            </button>
+
+            <ul id="blog-submenu" className="store-submenu" hidden={openCategory !== 'blog'}>
+              <li>
+                <Link to="/blog" onClick={closeMenu}>{t("Tất cả bài viết")}</Link>
+              </li>
+
+              {blogCategories.map((category) => (
+                <li key={t(category)}>
+                  <Link
+                    to={makeCategoryLink('/blog', category)}
+                    onClick={closeMenu}
+                  >
+                    {t(category)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </nav>
-        <div className="store-search">
-          <span aria-hidden="true">⌕</span>
-          <input type="search" placeholder="Tìm kiếm sneaker, phụ kiện..." aria-label="Tìm kiếm (chưa sẵn sàng)" title="Tìm kiếm sẽ được kết nối với phần sản phẩm" disabled />
-        </div>
+
         <div className="store-header-actions">
-          <Link to="/compare" className="store-compare-link" onClick={closeMenu}>So sánh</Link>
-          <button type="button" className="store-icon-button" disabled aria-label="Yêu thích (chưa sẵn sàng)" title="Danh sách yêu thích chưa sẵn sàng">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z" /></svg>
-          </button>
-          <Link to="/cart" className="store-icon-button" aria-label="Giỏ hàng" onClick={closeMenu}>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h3l3 12h11l3-9H6M8 15l-1 3h13" /><circle cx="9" cy="21" r="1" /><circle cx="18" cy="21" r="1" /></svg>
+          <Link
+            to="/compare"
+            className="store-compare-link"
+            onClick={closeMenu}
+          >
+            {t('So sánh')} ({compareCount})
           </Link>
+
+          <Link
+            to="/cart"
+            className="store-icon-button"
+            aria-label={t("Giỏ hàng")}
+            onClick={closeMenu}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M2 3h3l3 12h11l3-9H6M8 15l-1 3h13" />
+              <circle cx="9" cy="21" r="1" />
+              <circle cx="18" cy="21" r="1" />
+            </svg>
+          </Link>
+
           <Link to="/login" className="store-account" onClick={closeMenu}>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="4" /><path d="M4 21v-2a8 8 0 0 1 16 0v2" /></svg>
-            <span>Tài khoản</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="7" r="4" />
+              <path d="M4 21v-2a8 8 0 0 1 16 0v2" />
+            </svg>
+            <span>{t("Tài khoản")}</span>
           </Link>
         </div>
       </div>
     </header>
   );
 }
-

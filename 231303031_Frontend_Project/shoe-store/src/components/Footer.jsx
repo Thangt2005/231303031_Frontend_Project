@@ -1,29 +1,64 @@
+import { changeLanguage } from '../store/slice/LanguageSlice';
+import { translate } from '../utils/translations';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router';
+import '../styles/footer.css';
 
 export default function Footer() {
+  const dispatch = useDispatch();
+  const language = useSelector((state) => state.language);
+  const t = (text) => translate(text, language);
   return (
     <footer className="store-footer">
       <div className="store-container">
         <div className="store-footer-columns">
           <section className="store-footer-intro">
-            <Link to="/" className="store-footer-brand">SHOE STORE</Link>
-            <p>Giày chính hãng. Phong cách của bạn.</p>
-            <h2>KẾT NỐI VỚI CHÚNG TÔI</h2>
-            <p>Facebook · Instagram · TikTok</p>
-            <h2>PHƯƠNG THỨC THANH TOÁN</h2>
-            <div className="store-payment"><span>COD</span><span>CHUYỂN KHOẢN</span></div>
+            <Link to="/" className="store-footer-brand">
+              SHOE STORE
+            </Link>
+            <p>{t("Giày chính hãng. Phong cách của bạn.")}</p>
           </section>
           <section>
-            <h2>CHĂM SÓC KHÁCH HÀNG</h2>
-            <ul><li>Tra cứu đơn hàng</li><li>Hướng dẫn chọn size</li><li>Hướng dẫn mua hàng</li><li>Câu hỏi thường gặp</li></ul>
+            <h2>{t("KHÁM PHÁ")}</h2>
+            <ul>
+              <li>
+                <Link to="/">{t("Trang chủ")}</Link>
+              </li>
+              <li>
+                <Link to="/products">{t("Tất cả sản phẩm")}</Link>
+              </li>
+              <li>
+                <Link to="/compare">{t("So sánh sản phẩm")}</Link>
+              </li>
+            </ul>
           </section>
           <section>
-            <h2>CHÍNH SÁCH</h2>
-            <ul><li>Vận chuyển và giao nhận</li><li>Đổi trả và hoàn tiền</li><li>Bảo hành sản phẩm</li><li>Bảo mật thông tin</li></ul>
+            <h2>{t("CẨM NANG GIÀY")}</h2>
+            <ul>
+              <li>
+                <Link to="/blog/chon-giay-den-truong">{t("Chọn giày đến trường")}</Link>
+              </li>
+              <li>
+                <Link to="/blog/doc-nhan-ve-sinh-giay">{t("Chăm sóc giày")}</Link>
+              </li>
+              <li>
+                <Link to="/blog/sneaker-trang-va-jeans">{t("Gợi ý phối đồ")}</Link>
+              </li>
+            </ul>
           </section>
           <section>
-            <h2>VỀ SHOE STORE</h2>
-            <ul><li>Câu chuyện thương hiệu</li><li>Hệ thống cửa hàng</li><li>Liên hệ</li><li><Link to="/blog">Tin tức và ưu đãi</Link></li></ul>
+            <h2>SHOE STORE JOURNAL</h2>
+            <ul>
+              <li>
+                <Link to="/blog">{t("Tất cả bài viết")}</Link>
+              </li>
+              <li>
+                <Link to="/blog/thong-tin-giay-online">{t("Kinh nghiệm chọn giày online")}</Link>
+              </li>
+              <li>
+                <Link to="/blog/tieu-chi-chon-giay">{t("Tiêu chí so sánh giày")}</Link>
+              </li>
+            </ul>
           </section>
         </div>
         <div className="store-footer-address">
@@ -31,8 +66,16 @@ export default function Footer() {
           <p>NLU, Linh Trung, Thủ Đức, TP HCM</p>
         </div>
         <div className="store-footer-bottom">
-          <span>© {new Date().getFullYear()} SHOE STORE. All rights reserved.</span>
-          <span>Tiếng Việt | VND</span>
+          <span>
+            © {new Date().getFullYear()} SHOE STORE. All rights reserved.
+          </span>
+          <div className="store-language">
+            <select aria-label={language === 'en' ? 'Language' : 'Ngôn ngữ'} value={language} onChange={(event) => dispatch(changeLanguage(event.target.value))}>
+              <option value="vi">Tiếng Việt</option>
+              <option value="en">English</option>
+            </select>
+            <span>| VNĐ</span>
+          </div>
         </div>
       </div>
     </footer>
