@@ -1,5 +1,7 @@
 import { Routes, Route } from 'react-router';
 import Layout from '../layouts/Layout';
+import BlogDetail from '../pages/BlogDetail';
+import Compare from '../pages/Compare';
 import {
   Home,
   Products,
@@ -18,7 +20,9 @@ export default function AppRoutes() {
         <Route path="products" element={<Products />} />
         <Route path="products/:id" element={<ProductDetail />} />
         <Route path="cart" element={<Cart />} />
+        <Route path="compare" element={<Compare />} />
         <Route path="blog" element={<Blog />} />
+        <Route path="blog/:slug" element={<BlogDetail />} />
         <Route path="login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Route>
