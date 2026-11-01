@@ -1,4 +1,13 @@
+# Dependencies
 node_modules/
-dist/
-.vite/
-work/
+
+# IDE
+.idea/
+
+# Environment
+.env
+.env.*
+
+# System
+.DS_Store
+Thumbs.db
