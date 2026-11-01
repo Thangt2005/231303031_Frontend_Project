@@ -1,88 +1,66 @@
-/* Khung chung: Header ở trên, nội dung ở giữa và Footer phía dưới. */
-.store-layout {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  color: #252525;
-  background: #f6f6f6;
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-}
+/* Khung chung: nội dung trang con nằm giữa Header và Footer. */
+.store-layout { min-height: 100vh; display: flex; flex-direction: column; background: #fff; color: #171717; font-family: Arial, sans-serif; font-size: 14px; line-height: 1.6; }
 .store-layout * { box-sizing: border-box; }
-.store-container {
-  width: 100%;
-  max-width: 1160px;
-  margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-.store-header { background: #fff; }
-.store-topbar { padding: 7px 0; background: #f0f0f0; color: #555; font-size: 13px; }
-.store-header-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding-top: 24px;
-  padding-bottom: 24px;
-}
-.store-brand { color: #222; font-size: 30px; font-weight: bold; text-decoration: none; }
-.store-brand span, .store-footer-brand span { color: #17654e; }
-.store-brand small { display: block; font-size: 11px; font-weight: normal; letter-spacing: 1px; color: #666; }
-.store-header-links { display: flex; align-items: center; gap: 20px; }
-.store-header-links a { color: #333; text-decoration: none; }
-.store-header-links a:hover { color: #17654e; }
-.store-header-links .store-cart-link { padding: 8px 16px; border: 1px solid #17654e; border-radius: 4px; color: #17654e; }
-.store-nav-bar { background: #17654e; }
-.store-nav { display: flex; flex-wrap: wrap; }
-.store-nav a { color: white; padding: 12px 24px; text-decoration: none; }
-.store-nav a:hover, .store-nav a.active { background: #104c3b; }
-.store-nav a.active { font-weight: bold; }
-.store-main { flex: 1; padding-top: 32px; padding-bottom: 40px; }
-.store-footer { background: #fff; border-top: 1px solid #ddd; }
-.store-footer-columns { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; padding-top: 32px; padding-bottom: 32px; }
-.store-footer h2 { margin: 0 0 12px; font-size: 17px; }
-.store-footer .store-footer-brand { font-size: 25px; }
-.store-footer p { margin: 6px 0; color: #666; max-width: 360px; }
-.store-footer a { display: block; width: fit-content; margin: 6px 0; color: #555; text-decoration: none; }
-.store-footer a:hover { color: #17654e; text-decoration: underline; }
-.store-footer-bottom { border-top: 1px solid #e5e5e5; padding: 14px 0; color: #666; font-size: 13px; }
-.store-layout a:focus-visible { outline: 3px solid #df9d35; outline-offset: 3px; }
-.store-skip-link { position: absolute; top: -100px; left: 12px; z-index: 10; background: white; padding: 12px; color: #12513e; }
+.store-container { width: 100%; max-width: 1440px; margin: 0 auto; padding: 0 32px; }
+.store-layout a { color: inherit; }
+.store-layout a:focus-visible, .store-layout button:focus-visible { outline: 2px solid #c61620; outline-offset: 4px; }
+.store-topbar { padding: 5px 16px; background: #111; color: #fff; text-align: center; font-size: 10px; }
+.store-header { border-bottom: 1px solid #e5e5e5; }
+.store-header-row { display: flex; align-items: center; gap: 24px; min-height: 78px; padding-top: 14px; padding-bottom: 14px; }
+.store-brand { flex-shrink: 0; background: #e9e9e9; padding: 7px 16px; font-size: 21px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.store-nav { display: flex; align-items: center; gap: 24px; }
+.store-nav a, .store-nav > span { font-size: 11px; font-weight: 700; white-space: nowrap; text-decoration: none; }
+.store-nav a:hover, .store-nav a.active { text-decoration: underline; text-underline-offset: 6px; }
+.store-sale { color: #d90010; }
+.store-pending { cursor: default; }
+.store-search { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 140px; padding: 5px 13px; background: #f3f3f5; border-radius: 24px; color: #777; }
+.store-search > span { font-size: 22px; line-height: 1; }
+.store-search input { width: 100%; min-width: 0; padding: 5px 0; border: 0; background: transparent; font: inherit; font-size: 11px; color: #777; opacity: 1; }
+.store-header-actions { display: flex; align-items: center; gap: 18px; flex-shrink: 0; }
+.store-header-actions svg { width: 23px; height: 23px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+.store-icon-button { display: inline-flex; align-items: center; justify-content: center; min-width: 32px; min-height: 40px; padding: 0; background: none; border: 0; color: #171717; }
+.store-icon-button:disabled { color: #777; cursor: not-allowed; }
+.store-account { display: inline-flex; align-items: center; gap: 9px; padding: 6px 20px; border: 1px solid #ddd; border-radius: 24px; font-size: 12px; text-decoration: none; }
+.store-menu-button { display: none; padding: 9px 12px; border: 1px solid #ddd; background: #fff; font: inherit; cursor: pointer; }
+.store-main { flex: 1; min-height: 440px; padding-top: 32px; padding-bottom: 48px; }
+.store-footer { padding: 40px 0 24px; border-top: 2px solid #d71920; background: #f2f2f2; font-size: 13px; }
+.store-footer-columns { display: grid; grid-template-columns: 1.3fr 1.1fr 1fr 1fr; gap: 44px; padding-bottom: 42px; }
+.store-footer-brand { font-size: 27px; font-weight: 700; text-decoration: none; }
+.store-footer h2 { margin: 5px 0 20px; font-size: 13px; }
+.store-footer-intro h2 { margin: 24px 0 10px; }
+.store-footer p { margin: 8px 0; }
+.store-footer ul { padding: 0; margin: 0; list-style: none; }
+.store-footer li { margin-bottom: 12px; }
+.store-footer li a { text-decoration: none; }
+.store-footer li a:hover { text-decoration: underline; }
+.store-payment { display: flex; flex-wrap: wrap; gap: 8px; }
+.store-payment span { padding: 5px 14px; background: #fff; font-size: 11px; font-weight: 700; }
+.store-footer-address { padding-top: 20px; border-top: 1px solid #ddd; }
+.store-footer-bottom { display: flex; justify-content: space-between; gap: 16px; padding-top: 24px; color: #666; font-size: 11px; }
+.store-skip-link { position: absolute; left: 16px; top: -100px; z-index: 10; padding: 10px; background: #fff; }
 .store-skip-link:focus { top: 8px; }
-@media (max-width: 640px) {
-  .store-header-row { flex-direction: column; align-items: flex-start; gap: 16px; }
+@media (max-width: 1200px) {
+  .store-header-row { flex-wrap: wrap; gap: 16px; }
+  .store-search { order: 4; flex-basis: 100%; }
+  .store-header-actions { margin-left: auto; }
+  .store-nav { gap: 18px; }
+}
+@media (max-width: 800px) {
+  .store-container { padding-left: 20px; padding-right: 20px; }
+  .store-brand { font-size: 18px; }
+  .store-menu-button { display: block; margin-left: auto; }
+  .store-nav { display: none; order: 3; flex-basis: 100%; flex-wrap: wrap; padding: 10px 0; }
+  .store-nav.is-open { display: flex; }
+  .store-header-actions { margin-left: 0; }
+  .store-footer-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+}
+@media (max-width: 480px) {
   .store-container { padding-left: 16px; padding-right: 16px; }
-  .store-nav a { padding: 12px 16px; }
-  .store-footer-columns { grid-template-columns: 1fr; gap: 24px; }
-}
-
-/* Ô tìm kiếm nằm giữa logo và các liên kết tài khoản, giỏ hàng. */
-.store-brand { flex-shrink: 0; }
-.store-icon { width: 23px; height: 23px; flex-shrink: 0; }
-.store-header-links { flex-shrink: 0; }
-.store-header-links a { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
-.store-header-search {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex: 1;
-  min-width: 0;
-  max-width: 440px;
-  padding: 10px 14px;
-  border: 1px solid #d6ded9;
-  border-radius: 5px;
-  background: #f7f9f8;
-  color: #17654e;
-}
-.store-header-search input { width: 100%; min-width: 0; border: 0; background: transparent; font: inherit; color: #252525; }
-.store-header-search input:focus { outline: none; }
-.store-header-search:focus-within { outline: 2px solid #17654e; outline-offset: 2px; }
-@media (max-width: 900px) {
-  .store-header-row { flex-wrap: wrap; }
-  .store-header-search { flex-basis: 100%; max-width: none; order: 3; }
-}
-@media (max-width: 640px) {
-  .store-header-search { width: 100%; flex-basis: auto; }
-  .store-header-links { flex-wrap: wrap; gap: 16px; }
+  .store-topbar { font-size: 9px; }
+  .store-header-row { gap: 12px; }
+  .store-header-actions { width: 100%; justify-content: flex-end; }
+  .store-account { padding: 6px 14px; }
+  .store-main { min-height: 300px; padding-top: 24px; }
+  .store-footer-columns { grid-template-columns: 1fr; }
+  .store-footer-bottom { flex-direction: column; }
 }
