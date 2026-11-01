@@ -1,0 +1,88 @@
+/* Khung chung: Header ở trên, nội dung ở giữa và Footer phía dưới. */
+.store-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #252525;
+  background: #f6f6f6;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+.store-layout * { box-sizing: border-box; }
+.store-container {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.store-header { background: #fff; }
+.store-topbar { padding: 7px 0; background: #f0f0f0; color: #555; font-size: 13px; }
+.store-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+.store-brand { color: #222; font-size: 30px; font-weight: bold; text-decoration: none; }
+.store-brand span, .store-footer-brand span { color: #17654e; }
+.store-brand small { display: block; font-size: 11px; font-weight: normal; letter-spacing: 1px; color: #666; }
+.store-header-links { display: flex; align-items: center; gap: 20px; }
+.store-header-links a { color: #333; text-decoration: none; }
+.store-header-links a:hover { color: #17654e; }
+.store-header-links .store-cart-link { padding: 8px 16px; border: 1px solid #17654e; border-radius: 4px; color: #17654e; }
+.store-nav-bar { background: #17654e; }
+.store-nav { display: flex; flex-wrap: wrap; }
+.store-nav a { color: white; padding: 12px 24px; text-decoration: none; }
+.store-nav a:hover, .store-nav a.active { background: #104c3b; }
+.store-nav a.active { font-weight: bold; }
+.store-main { flex: 1; padding-top: 32px; padding-bottom: 40px; }
+.store-footer { background: #fff; border-top: 1px solid #ddd; }
+.store-footer-columns { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; padding-top: 32px; padding-bottom: 32px; }
+.store-footer h2 { margin: 0 0 12px; font-size: 17px; }
+.store-footer .store-footer-brand { font-size: 25px; }
+.store-footer p { margin: 6px 0; color: #666; max-width: 360px; }
+.store-footer a { display: block; width: fit-content; margin: 6px 0; color: #555; text-decoration: none; }
+.store-footer a:hover { color: #17654e; text-decoration: underline; }
+.store-footer-bottom { border-top: 1px solid #e5e5e5; padding: 14px 0; color: #666; font-size: 13px; }
+.store-layout a:focus-visible { outline: 3px solid #df9d35; outline-offset: 3px; }
+.store-skip-link { position: absolute; top: -100px; left: 12px; z-index: 10; background: white; padding: 12px; color: #12513e; }
+.store-skip-link:focus { top: 8px; }
+@media (max-width: 640px) {
+  .store-header-row { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .store-container { padding-left: 16px; padding-right: 16px; }
+  .store-nav a { padding: 12px 16px; }
+  .store-footer-columns { grid-template-columns: 1fr; gap: 24px; }
+}
+
+/* Ô tìm kiếm nằm giữa logo và các liên kết tài khoản, giỏ hàng. */
+.store-brand { flex-shrink: 0; }
+.store-icon { width: 23px; height: 23px; flex-shrink: 0; }
+.store-header-links { flex-shrink: 0; }
+.store-header-links a { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+.store-header-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+  max-width: 440px;
+  padding: 10px 14px;
+  border: 1px solid #d6ded9;
+  border-radius: 5px;
+  background: #f7f9f8;
+  color: #17654e;
+}
+.store-header-search input { width: 100%; min-width: 0; border: 0; background: transparent; font: inherit; color: #252525; }
+.store-header-search input:focus { outline: none; }
+.store-header-search:focus-within { outline: 2px solid #17654e; outline-offset: 2px; }
+@media (max-width: 900px) {
+  .store-header-row { flex-wrap: wrap; }
+  .store-header-search { flex-basis: 100%; max-width: none; order: 3; }
+}
+@media (max-width: 640px) {
+  .store-header-search { width: 100%; flex-basis: auto; }
+  .store-header-links { flex-wrap: wrap; gap: 16px; }
+}
