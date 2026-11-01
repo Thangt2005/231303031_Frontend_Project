@@ -70,3 +70,9 @@
 .not-found > a { display: inline-block; margin-top: 20px; font-weight: bold; }
 .store-compare-link { font-size: 12px; text-decoration: none; white-space: nowrap; }
 .store-compare-link:hover { text-decoration: underline; }
+.account-page { max-width: 720px; margin: 0 auto; }
+.account-eyebrow { color: #b5151e; font-size: 11px; letter-spacing: 2px; }
+.account-info { padding: 24px; border: 1px solid #ddd; background: #fafafa; }
+.account-info > div { padding: 14px 0; }
+.account-info dt { font-weight: bold; }
+.account-info dd { margin: 6px 0 0; overflow-wrap: anywhere; }
