@@ -1,4 +1,5 @@
 import { Link, NavLink } from 'react-router';
+import LoginDropdown from './LoginDropdown';
 
 export default function Header() {
   return (
@@ -24,13 +25,7 @@ export default function Header() {
           />
         </div>
         <div className="store-header-links">
-          <Link to="/login">
-            <svg className="store-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-              <circle cx="12" cy="7" r="4" />
-              <path d="M4 21v-2a8 8 0 0 1 16 0v2" />
-            </svg>
-            <span>Tài Khoản</span>
-          </Link>
+          <LoginDropdown />
           <Link className="store-cart-link" to="/cart">
             <svg className="store-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
               <path d="M2 3h3l3 12h11l3-9H6M8 15l-1 3h13" />
@@ -51,4 +46,3 @@ export default function Header() {
     </header>
   );
 }
-
