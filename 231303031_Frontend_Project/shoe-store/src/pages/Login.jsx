@@ -1,7 +1,9 @@
+import LoginForm from '../components/LoginForm';
+
 export default function Login() {
   return (
-    <div>
-      <h1>Đăng nhập</h1>
+    <div className="login-page-wrapper">
+      <LoginForm />
     </div>
   );
 }

@@ -1,9 +1,8 @@
-
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
+import LoginDropdown from './LoginDropdown';
 import '../styles/header.css';
 
-// Danh sách menu
 const menuList = [
   { title: 'Trang chủ', path: '/' },
   {
@@ -53,13 +52,11 @@ export default function Header({ cartCount = 0 }) {
     }
   };
 
-  // Menu
   const closeAllMenu = () => {
     setOpenMenu('');
     setShowMobileMenu(false);
   };
 
-  // Tìm kiếm
   const handleSearch = (event) => {
     event.preventDefault();
 
@@ -89,12 +86,9 @@ export default function Header({ cartCount = 0 }) {
         </Link>
 
         <div className="header-actions">
-          <Link
-            to="/login"
-            className="action-link hide-mobile"
-          >
-            TÀI KHOẢN
-          </Link>
+          <div className="hide-mobile">
+            <LoginDropdown />
+          </div>
 
           <Link to="/cart" className="action-link">
             <span className="hide-mobile">GIỎ HÀNG</span>
@@ -158,7 +152,6 @@ export default function Header({ cartCount = 0 }) {
             value={keyword}
             onChange={(event) => setKeyword(event.target.value)}
           />
-
           <button type="submit">TÌM</button>
         </form>
       )}
