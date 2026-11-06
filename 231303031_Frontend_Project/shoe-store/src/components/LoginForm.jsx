@@ -1,13 +1,17 @@
 import { useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import { useAuth } from '../context/AuthContext';
 import '../styles/login.css';
 
 export default function LoginForm({ onSuccess }) {
+  const { login } = useAuth();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     password: '',
     remember: false,
   });
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -15,12 +19,25 @@ export default function LoginForm({ onSuccess }) {
       ...prev,
       [name]: type === 'checkbox' ? checked : value,
     }));
+    if (error) {
+      setError('');
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const result = login(formData.username, formData.password);
+
+    if (!result.success) {
+      setError(result.message);
+      return;
+    }
+
+    setError('');
     if (onSuccess) {
-      onSuccess(formData);
+      onSuccess();
+    } else {
+      navigate('/');
     }
   };
 
@@ -28,6 +45,8 @@ export default function LoginForm({ onSuccess }) {
     <div className="login-form-container">
       <h3 className="login-form-title">Đăng nhập</h3>
       <form className="login-form" onSubmit={handleSubmit}>
+        {error && <div className="login-error-message">{error}</div>}
+
         <div className="login-form-group">
           <label htmlFor="username">Tài khoản</label>
           <input
@@ -78,4 +97,3 @@ export default function LoginForm({ onSuccess }) {
     </div>
   );
 }
-
