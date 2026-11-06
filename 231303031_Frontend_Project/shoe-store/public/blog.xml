@@ -1,83 +1,181 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+
+<!-- Blog du phong -->
+<rss version="2.0"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+
   <channel>
     <title>Shoe Store Blog</title>
-    <link>https://shoe-store.example/blog</link>
-    <description>Câu chuyện về giày, phối đồ và chăm sóc giày.</description>
+    <link>https://shoestore.vn/blog</link>
+    <description>Kinh nghiệm chọn giày, phối đồ và chăm sóc giày</description>
     <language>vi</language>
-    <!-- Dữ liệu mẫu do nhóm tự viết. Tên miền .example cần thay khi triển khai. -->
-    <!-- guid là mã duy nhất. Với file nội bộ này, mã cũng dùng được làm slug. -->
+
+    <!-- Bai 1 -->
     <item>
-      <title>Chọn giày cho một ngày đến trường</title>
-      <guid isPermaLink="false">chon-giay-den-truong</guid>
-      <link>https://shoe-store.example/blog/chon-giay-den-truong</link>
-      <pubDate>Sat, 31 Oct 2026 09:00:00 +0700</pubDate>
+      <title>Cách chọn size giày chuẩn khi mua online</title>
+      <guid isPermaLink="false">cach-chon-size-giay-online</guid>
+      <link>https://shoestore.vn/blog/cach-chon-size-giay-online</link>
+      <dc:creator>Shoe Store</dc:creator>
       <category>Chọn giày</category>
-      <description><![CDATA[Một đôi giày đi học cần phù hợp với lịch sinh hoạt hằng ngày. Bạn có thể ghi lại mình thường đi bộ bao xa, học ở phòng nào và hay mặc trang phục gì trước khi chọn kiểu giày.
+      <pubDate>Sun, 01 Nov 2026 09:00:00 +0700</pubDate>
+      <description>Đo chiều dài bàn chân, đối chiếu bảng size của từng hãng và cộng thêm khoảng trống ở mũi giày để không phải đổi trả.</description>
+      <content:encoded><![CDATA[
+        <p>Mua giày online tiện nhưng dễ chọn sai size. Chỉ cần 3 bước dưới đây là bạn chọn được đôi vừa chân.</p>
 
-Khi thử giày, hãy mang loại tất bạn thường sử dụng và thử cả hai chân. Đi lại một đoạn để kiểm tra phần gót, mũi giày và dây buộc. Đừng chọn chỉ vì mẫu giày đẹp nếu bạn cảm thấy không thoải mái.
+        <h2>Bước 1: Đo chiều dài bàn chân</h2>
+        <p>Đặt bàn chân lên tờ giấy, đánh dấu điểm gót và đầu ngón dài nhất rồi đo khoảng cách. Nên đo vào buổi chiều vì lúc đó chân hơi nở hơn buổi sáng.</p>
 
-Cuối cùng, xem bảng kích cỡ của đúng mẫu sản phẩm và chính sách đổi trả của cửa hàng. Những thông tin này giúp bạn chọn lựa rõ ràng hơn.]]></description>
+        <h2>Bước 2: Xem bảng size của đúng hãng</h2>
+        <p>Cùng là size 40 nhưng Nike, Adidas và Converse có thể chênh nhau 0,5 cm. Luôn xem bảng size trong trang chi tiết sản phẩm.</p>
+
+        <h2>Bước 3: Cộng thêm khoảng trống</h2>
+        <ul>
+          <li>Giày sneaker: cộng 0,5 – 1 cm.</li>
+          <li>Giày chạy bộ: cộng khoảng 1 cm vì chân sẽ nở khi chạy.</li>
+          <li>Giày da: cộng 0,5 cm, da sẽ giãn nhẹ sau vài tuần.</li>
+        </ul>
+
+        <p>Nếu vẫn phân vân giữa hai size, hãy chọn size lớn hơn và dùng thêm lót giày.</p>
+      ]]></content:encoded>
     </item>
+
+    <!-- Bai 2 -->
     <item>
-      <title>Phối sneaker trắng với quần jeans</title>
-      <guid isPermaLink="false">sneaker-trang-va-jeans</guid>
-      <link>https://shoe-store.example/blog/sneaker-trang-va-jeans</link>
-      <pubDate>Fri, 30 Oct 2026 09:00:00 +0700</pubDate>
-      <category>Phối đồ</category>
-      <description><![CDATA[Sneaker trắng và quần jeans là một gợi ý phối đồ đơn giản cho những ngày đi học. Bạn có thể bắt đầu với áo thun trơn, sau đó thêm áo khoác khi cần.
+      <title>Giày chạy bộ và sneaker thời trang khác nhau thế nào?</title>
+      <guid isPermaLink="false">giay-chay-bo-va-sneaker</guid>
+      <link>https://shoestore.vn/blog/giay-chay-bo-va-sneaker</link>
+      <dc:creator>Minh Khoa</dc:creator>
+      <category>Kiến thức</category>
+      <pubDate>Thu, 29 Oct 2026 19:30:00 +0700</pubDate>
+      <description>Nhìn bề ngoài khá giống nhau nhưng đế, đệm và trọng lượng của hai loại giày được thiết kế cho hai mục đích khác hẳn.</description>
+      <content:encoded><![CDATA[
+        <p>Nhiều bạn mua sneaker thời trang để chạy bộ rồi bị đau gót. Lý do nằm ở cấu tạo của giày.</p>
 
-Nếu muốn có điểm nhấn, thử chọn màu tất gần với màu áo hoặc túi. Thay đổi từng món giúp bạn dễ nhận ra bộ đồ nào phù hợp với sở thích của mình.
+        <h2>Giày chạy bộ</h2>
+        <ul>
+          <li>Đệm dày ở gót và mũi để giảm lực va chạm.</li>
+          <li>Thân giày bằng lưới, nhẹ và thoáng khí.</li>
+          <li>Đế có rãnh giúp bàn chân gập tự nhiên khi chạy.</li>
+        </ul>
 
-Trước khi ra ngoài, kiểm tra dây giày và các vết bẩn dễ thấy. Trang phục gọn gàng và giày sạch giúp tổng thể trông chỉn chu hơn.]]></description>
+        <h2>Sneaker thời trang</h2>
+        <ul>
+          <li>Đế bằng, cứng hơn, thiên về kiểu dáng.</li>
+          <li>Chất liệu da hoặc canvas nên nặng và bí hơn.</li>
+          <li>Hợp để đi học, đi chơi, phối đồ hằng ngày.</li>
+        </ul>
+
+        <p>Nếu bạn chạy trên 3 km mỗi tuần, nên đầu tư một đôi giày chạy bộ riêng.</p>
+      ]]></content:encoded>
     </item>
+
+    <!-- Bai 3 -->
     <item>
-      <title>Đọc nhãn trước khi vệ sinh giày</title>
-      <guid isPermaLink="false">doc-nhan-ve-sinh-giay</guid>
-      <link>https://shoe-store.example/blog/doc-nhan-ve-sinh-giay</link>
-      <pubDate>Thu, 29 Oct 2026 09:00:00 +0700</pubDate>
+      <title>Vệ sinh giày sneaker trắng tại nhà chỉ trong 15 phút</title>
+      <guid isPermaLink="false">ve-sinh-sneaker-trang</guid>
+      <link>https://shoestore.vn/blog/ve-sinh-sneaker-trang</link>
+      <dc:creator>Thu Hà</dc:creator>
       <category>Chăm sóc giày</category>
-      <description><![CDATA[Giày vải, da và da lộn có cách chăm sóc khác nhau. Trước khi làm sạch, hãy đọc nhãn hoặc hướng dẫn của nhà sản xuất để biết dụng cụ và sản phẩm phù hợp.
+      <pubDate>Mon, 26 Oct 2026 08:00:00 +0700</pubDate>
+      <description>Bàn chải mềm, nước ấm và một chút kem đánh răng là đủ để đôi giày trắng sạch như mới mà không bị ố vàng.</description>
+      <content:encoded><![CDATA[
+        <p>Giày trắng rất dễ bẩn nhưng cũng dễ làm sạch nếu bạn làm đúng cách.</p>
 
-Loại bỏ bụi khô trước khi xử lý các vết bẩn khác. Nếu dùng dung dịch làm sạch, hãy làm theo hướng dẫn và thử ở vùng nhỏ ít thấy.
+        <h2>Chuẩn bị</h2>
+        <ul>
+          <li>Bàn chải đánh răng cũ (lông mềm)</li>
+          <li>Nước ấm pha một ít nước rửa chén</li>
+          <li>Kem đánh răng màu trắng</li>
+          <li>Khăn sạch</li>
+        </ul>
 
-Chỉ cất giày sau khi đã khô theo hướng dẫn. Không mặc định rằng mọi đôi giày đều có thể giặt máy hoặc dùng nhiệt để làm khô.]]></description>
+        <h2>Các bước</h2>
+        <ol>
+          <li>Tháo dây giày và lót giày, ngâm riêng trong nước xà phòng.</li>
+          <li>Chải nhẹ thân giày theo vòng tròn, không chà quá mạnh.</li>
+          <li>Phần đế bị ố thì bôi kem đánh răng, để 5 phút rồi chải sạch.</li>
+          <li>Lau lại bằng khăn ẩm và để khô ở nơi thoáng gió.</li>
+        </ol>
+
+        <p><strong>Lưu ý:</strong> không phơi giày trắng trực tiếp dưới nắng gắt vì sẽ làm keo và đế bị vàng.</p>
+      ]]></content:encoded>
     </item>
+
+    <!-- Bai 4 -->
     <item>
-      <title>Sắp xếp kệ giày trong phòng nhỏ</title>
-      <guid isPermaLink="false">sap-xep-ke-giay</guid>
-      <link>https://shoe-store.example/blog/sap-xep-ke-giay</link>
-      <pubDate>Wed, 28 Oct 2026 09:00:00 +0700</pubDate>
-      <category>Bảo quản</category>
-      <description><![CDATA[Hãy chia giày thành hai nhóm: thường dùng và ít dùng. Đặt các đôi thường dùng ở vị trí dễ lấy để việc chuẩn bị mỗi sáng nhanh hơn.
+      <title>4 cách phối giày Adidas Samba cho sinh viên</title>
+      <guid isPermaLink="false">phoi-do-voi-adidas-samba</guid>
+      <link>https://shoestore.vn/blog/phoi-do-voi-adidas-samba</link>
+      <dc:creator>Minh Khoa</dc:creator>
+      <category>Phối đồ</category>
+      <pubDate>Thu, 22 Oct 2026 20:00:00 +0700</pubDate>
+      <description>Samba đế mỏng, dáng thấp nên rất dễ phối. Đây là 4 công thức đơn giản để đi học, đi chơi hay đi thực tập.</description>
+      <content:encoded><![CDATA[
+        <p>Adidas Samba là mẫu giày "quốc dân" vì kiểu dáng gọn và hợp nhiều phong cách.</p>
 
-Chọn chỗ khô ráo và tránh nơi dễ bị nước hắt vào. Kiểm tra tình trạng giày sau khi sử dụng trước khi đưa trở lại kệ.
+        <ol>
+          <li><strong>Đi học:</strong> quần jeans ống suông, áo thun trơn, thêm áo khoác sơ mi khi trời lạnh.</li>
+          <li><strong>Đi chơi cuối tuần:</strong> quần short kaki, áo polo và tất trắng cổ thấp.</li>
+          <li><strong>Đi thực tập:</strong> quần tây ống đứng màu be, áo sơ mi cài nút. Nên chọn Samba màu đen cho lịch sự.</li>
+          <li><strong>Phong cách thể thao:</strong> quần jogger, áo hoodie rộng.</li>
+        </ol>
 
-Nếu giữ giày trong hộp, bạn có thể ghi tên hoặc màu bên ngoài. Việc này giúp tìm đúng đôi cần dùng mà không phải mở từng hộp.]]></description>
+        <p>Mẹo nhỏ: chọn màu tất trùng với màu quần để chân trông dài hơn.</p>
+      ]]></content:encoded>
     </item>
+
+    <!-- Bai 5 -->
     <item>
-      <title>Những thông tin cần xem khi chọn giày online</title>
-      <guid isPermaLink="false">thong-tin-giay-online</guid>
-      <link>https://shoe-store.example/blog/thong-tin-giay-online</link>
-      <pubDate>Tue, 27 Oct 2026 09:00:00 +0700</pubDate>
-      <category>Kinh nghiệm</category>
-      <description><![CDATA[Ảnh sản phẩm giúp hình dung kiểu dáng, còn phần mô tả cung cấp thông tin về chất liệu, màu và kích cỡ. Hãy đọc cả hai trước khi quyết định.
+      <title>Khi nào bạn nên thay một đôi giày chạy bộ mới?</title>
+      <guid isPermaLink="false">khi-nao-thay-giay-chay-bo</guid>
+      <link>https://shoestore.vn/blog/khi-nao-thay-giay-chay-bo</link>
+      <dc:creator>Shoe Store</dc:creator>
+      <category>Kiến thức</category>
+      <pubDate>Sun, 18 Oct 2026 07:00:00 +0700</pubDate>
+      <description>Một đôi giày chạy bộ thường dùng tốt trong khoảng 500 – 800 km. Có 3 dấu hiệu cho thấy đã đến lúc bạn nên thay giày.</description>
+      <content:encoded><![CDATA[
+        <p>Lớp đệm của giày chạy bộ sẽ xẹp dần theo thời gian, kể cả khi nhìn bên ngoài giày vẫn còn mới.</p>
 
-Đối chiếu bảng kích cỡ của sản phẩm đang xem. Không nên cho rằng cùng một số size sẽ luôn giống nhau ở mọi hãng.
+        <h2>3 dấu hiệu cần thay giày</h2>
+        <ul>
+          <li>Đế ngoài bị mòn phẳng, mất các rãnh bám.</li>
+          <li>Bấm vào đệm gót thấy cứng, không còn đàn hồi.</li>
+          <li>Sau khi chạy bị đau gối hoặc đau gót dù chạy quãng đường quen thuộc.</li>
+        </ul>
 
-Bạn cũng nên đọc chính sách đổi trả và hỏi cửa hàng về thông tin còn thiếu. Lưu lại mã sản phẩm sẽ giúp trao đổi dễ hơn.]]></description>
+        <p>Nếu chạy khoảng 20 km mỗi tuần, bạn nên thay giày sau 6 – 9 tháng.</p>
+      ]]></content:encoded>
     </item>
+
+    <!-- Bai 6 -->
     <item>
-      <title>Ghi lại tiêu chí trước khi so sánh giày</title>
-      <guid isPermaLink="false">tieu-chi-chon-giay</guid>
-      <link>https://shoe-store.example/blog/tieu-chi-chon-giay</link>
-      <pubDate>Mon, 26 Oct 2026 09:00:00 +0700</pubDate>
-      <category>So sánh</category>
-      <description><![CDATA[Trước khi đặt các mẫu giày cạnh nhau, hãy xác định nhu cầu chính của bạn. Giày đi học, đi chơi và giày cho một hoạt động cụ thể có thể cần các tiêu chí khác nhau.
+      <title>Bảo quản giày da trong mùa mưa</title>
+      <guid isPermaLink="false">bao-quan-giay-da-mua-mua</guid>
+      <link>https://shoestore.vn/blog/bao-quan-giay-da-mua-mua</link>
+      <dc:creator>Thu Hà</dc:creator>
+      <category>Chăm sóc giày</category>
+      <pubDate>Tue, 13 Oct 2026 18:15:00 +0700</pubDate>
+      <description>Giày da bị ướt rất dễ nứt và mốc. Vài thói quen nhỏ giúp đôi giày da của bạn bền đẹp qua mùa mưa.</description>
+      <content:encoded><![CDATA[
+        <p>Da thật hút nước, nếu để ướt lâu sẽ bị cứng, nứt và có mùi.</p>
 
-Bạn có thể lập bảng nhỏ gồm tên, giá, màu và chất liệu. Chỉ điền thông tin được cửa hàng cung cấp; phần chưa rõ nên ghi chú để hỏi thêm.
+        <h2>Khi giày bị ướt</h2>
+        <ol>
+          <li>Lau sạch bùn đất bằng khăn mềm.</li>
+          <li>Nhét giấy báo vào trong để hút ẩm, thay giấy sau vài giờ.</li>
+          <li>Để khô tự nhiên, tuyệt đối không dùng máy sấy hay phơi nắng.</li>
+        </ol>
 
-Bắt đầu với hai hoặc ba lựa chọn để dễ theo dõi. Sau đó xem mẫu nào đáp ứng các tiêu chí quan trọng nhất với mình.]]></description>
+        <h2>Phòng ngừa</h2>
+        <ul>
+          <li>Xịt chống thấm trước mùa mưa.</li>
+          <li>Đánh xi hoặc dưỡng da 2 – 3 tuần một lần.</li>
+          <li>Cất giày trong hộp có gói hút ẩm.</li>
+        </ul>
+      ]]></content:encoded>
     </item>
+
   </channel>
 </rss>

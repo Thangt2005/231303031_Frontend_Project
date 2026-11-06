@@ -1,28 +1,54 @@
 import { Link } from 'react-router';
+import '../styles/footer.css';
+
+const exploreLinks = [
+  { name: 'Trang chủ', path: '/' },
+  { name: 'Sản phẩm', path: '/products' },
+  { name: 'Blog về giày', path: '/blog' },
+];
+
+const accountLinks = [
+  { name: 'Đăng nhập', path: '/login' },
+  { name: 'Giỏ hàng', path: '/cart' },
+];
 
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="store-footer">
-      <div className="store-container store-footer-columns">
-        <div>
-          <h2 className="store-footer-brand">SHOE <span>STORE</span></h2>
+    <footer className="footer">
+      <div className="footer-top">
+        <div className="footer-brand">
+          <Link to="/" className="footer-logo">SHOE STORE</Link>
           <p>Giày cho phong cách của bạn.</p>
           <p>GIÀY CHÍNH HÃNG!</p>
+          <p>
+            Hotline: <a href="tel:88888888">8888 8888</a>
+          </p>
         </div>
-        <div>
-          <h2>Khám phá</h2>
-          <Link to="/">Trang chủ</Link>
-          <Link to="/products">Sản phẩm</Link>
-          <Link to="/blog">Blog về giày</Link>
+        <div className="footer-column">
+          <h3 className="footer-title">Khám phá</h3>
+          <ul className="footer-list">
+            {exploreLinks.map((item) => (
+              <li key={item.path}>
+                <Link to={item.path}>{item.name}</Link>
+              </li>
+            ))}
+          </ul>
         </div>
-        <div>
-          <h2>Tài khoản</h2>
-          <Link to="/login">Đăng nhập</Link>
-          <Link to="/cart">Giỏ hàng</Link>
+        <div className="footer-column">
+          <h3 className="footer-title">Tài khoản</h3>
+          <ul className="footer-list">
+            {accountLinks.map((item) => (
+              <li key={item.path}>
+                <Link to={item.path}>{item.name}</Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-      <div className="store-footer-bottom">
-        <div className="store-container">© {new Date().getFullYear()} Shoe Store.</div>
+      <div className="footer-bottom">
+        <p>© {year} Shoe Store.</p>
       </div>
     </footer>
   );
