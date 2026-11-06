@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router';
 import { useAuth } from '../context/AuthContext';
 import LoginForm from './LoginForm';
 import '../styles/login.css';
@@ -6,6 +7,20 @@ import '../styles/login.css';
 export default function LoginDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logout } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (location.state?.message) {
+      setIsOpen(true);
+    }
+  }, [location.state]);
+
+  const handleLoginSuccess = () => {
+    setIsOpen(false);
+    const target = location.state?.from || '/';
+    navigate(target, { replace: true, state: {} });
+  };
 
   return (
     <div className="login-dropdown-wrapper">
@@ -33,7 +48,7 @@ export default function LoginDropdown() {
             </button>
           </div>
         ) : (
-          <LoginForm onSuccess={() => setIsOpen(false)} />
+          <LoginForm onSuccess={handleLoginSuccess} />
         )}
       </div>
     </div>

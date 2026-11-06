@@ -1,17 +1,24 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router';
 import { useAuth } from '../context/AuthContext';
 import '../styles/login.css';
 
 export default function LoginForm({ onSuccess }) {
   const { login } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [formData, setFormData] = useState({
     username: '',
     password: '',
     remember: false,
   });
-  const [error, setError] = useState('');
+  const [error, setError] = useState(location.state?.message || '');
+
+  useEffect(() => {
+    if (location.state?.message) {
+      setError(location.state.message);
+    }
+  }, [location.state]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -37,7 +44,8 @@ export default function LoginForm({ onSuccess }) {
     if (onSuccess) {
       onSuccess();
     } else {
-      navigate('/');
+      const target = location.state?.from || '/';
+      navigate(target, { replace: true, state: {} });
     }
   };
 
