@@ -1,0 +1,97 @@
+/* FOOTER */
+.footer {
+  background-color: #ffffff;
+  color: #111111;
+  font-family: Arial, Helvetica, sans-serif;
+  border-top: 1px solid #cccccc;
+}
+.footer-top {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 40px 15px 30px;
+  display: flex;
+}
+
+.footer-brand {
+  flex: 2;
+}
+
+.footer-column {
+  flex: 1;
+}
+
+.footer-logo {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #222222;
+  text-decoration: none;
+}
+
+.footer-brand p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #666666;
+}
+
+.footer-brand a {
+  color: #111111;
+  font-weight: bold;
+  text-decoration: none;
+}
+.footer-title {
+  margin: 8px 0 16px;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.footer-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-list li {
+  margin-bottom: 10px;
+}
+
+.footer-list a {
+  font-size: 14px;
+  color: #666666;
+  text-decoration: none;
+}
+
+.footer-list a:hover,
+.footer-logo:hover {
+  color: #888888;
+}
+
+.footer-bottom {
+  border-top: 1px solid #eeeeee;
+}
+
+.footer-bottom p {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 14px 15px;
+  font-size: 13px;
+  color: #888888;
+}
+
+/* ĐIỆN THOẠI */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    padding: 30px 15px 10px;
+  }
+
+  .footer-brand,
+  .footer-column {
+    margin-bottom: 20px;
+  }
+}
