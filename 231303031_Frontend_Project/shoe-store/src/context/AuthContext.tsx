@@ -1,6 +1,22 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, ReactNode } from 'react';
 
-export const MOCK_USERS = [
+export interface User {
+  id: number;
+  username: string;
+  password?: string;
+  name: string;
+  email: string;
+  address: string;
+  sdt: string;
+}
+
+export interface AuthContextType {
+  user: User | null;
+  login: (username: string, password: string) => { success: boolean; message?: string };
+  logout: () => void;
+}
+
+export const MOCK_USERS: User[] = [
   {
     id: 1,
     username: "tranductri",
@@ -48,15 +64,15 @@ export const MOCK_USERS = [
   }
 ];
 
-const AuthContext = createContext(null);
+const AuthContext = createContext<AuthContextType | null>(null);
 
-export function AuthProvider({ children }) {
-  const [user, setUser] = useState(() => {
+export function AuthProvider({ children }: { children: ReactNode }) {
+  const [user, setUser] = useState<User | null>(() => {
     const saved = localStorage.getItem('user');
     return saved ? JSON.parse(saved) : null;
   });
 
-  const login = (username, password) => {
+  const login = (username: string, password: string) => {
     const found = MOCK_USERS.find(
       (u) => u.username === username || u.email === username
     );
@@ -83,5 +99,10 @@ export function AuthProvider({ children }) {
 }
 
 export function useAuth() {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+  return context;
 }
+
