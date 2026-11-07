@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
+import { useAuth } from '../context/AuthContext';
 import LoginDropdown from './LoginDropdown';
 import '../styles/header.css';
 
@@ -37,6 +38,7 @@ const menuList = [
 ];
 
 export default function Header({ cartCount = 0 }) {
+  const { user, logout } = useAuth();
   const [openMenu, setOpenMenu] = useState('');
   const [showSearch, setShowSearch] = useState(false);
   const [keyword, setKeyword] = useState('');
@@ -212,13 +214,27 @@ export default function Header({ cartCount = 0 }) {
           ))}
 
           <li className="nav-item show-mobile">
-            <Link
-              to="/login"
-              className="nav-link"
-              onClick={closeAllMenu}
-            >
-              Tài khoản
-            </Link>
+            {user ? (
+              <button
+                type="button"
+                className="nav-link"
+                style={{ background: 'none', border: 'none', textAlign: 'left', cursor: 'pointer', width: '100%' }}
+                onClick={() => {
+                  logout();
+                  closeAllMenu();
+                }}
+              >
+                Đăng xuất ({user.username})
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                classNam  e="nav-link"
+                onClick={closeAllMenu}
+              >
+                Tài khoản
+              </Link>
+            )}
           </li>
         </ul>
       </nav>
