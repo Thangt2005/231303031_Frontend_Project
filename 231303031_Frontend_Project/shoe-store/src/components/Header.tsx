@@ -1,10 +1,25 @@
-
 import { useState } from 'react';
+import type { FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router';
 import '../styles/header.css';
 
+type HeaderProps = {
+  cartCount?: number;
+};
+
+type SubMenu = {
+  name: string;
+  path: string;
+};
+
+type Menu = {
+  title: string;
+  path: string;
+  children?: SubMenu[];
+};
+
 // Danh sách menu
-const menuList = [
+const menuList: Menu[] = [
   { title: 'Trang chủ', path: '/' },
   {
     title: 'Giày',
@@ -37,7 +52,7 @@ const menuList = [
   { title: 'Blog', path: '/blog' },
 ];
 
-export default function Header({ cartCount = 0 }) {
+export default function Header({ cartCount = 0 }: HeaderProps) {
   const [openMenu, setOpenMenu] = useState('');
   const [showSearch, setShowSearch] = useState(false);
   const [keyword, setKeyword] = useState('');
@@ -45,7 +60,8 @@ export default function Header({ cartCount = 0 }) {
 
   const navigate = useNavigate();
 
-  const toggleSubMenu = (title) => {
+  // Mở hoặc đóng menu con
+  const toggleSubMenu = (title: string) => {
     if (openMenu === title) {
       setOpenMenu('');
     } else {
@@ -53,14 +69,14 @@ export default function Header({ cartCount = 0 }) {
     }
   };
 
-  // Menu
+  // Đóng menu
   const closeAllMenu = () => {
     setOpenMenu('');
     setShowMobileMenu(false);
   };
 
   // Tìm kiếm
-  const handleSearch = (event) => {
+  const handleSearch = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (keyword.trim() === '') {
@@ -79,20 +95,13 @@ export default function Header({ cartCount = 0 }) {
           HOTLINE: <a href="tel:88888888">8888 8888</a>
         </div>
 
-        <Link
-          to="/"
-          className="header-logo"
-          onClick={closeAllMenu}
-        >
+        <Link to="/" className="header-logo" onClick={closeAllMenu}>
           <span className="logo-name">SHOE STORE</span>
           <span className="logo-slogan">GIÀY CHÍNH HÃNG</span>
         </Link>
 
         <div className="header-actions">
-          <Link
-            to="/login"
-            className="action-link hide-mobile"
-          >
+          <Link to="/login" className="action-link hide-mobile">
             TÀI KHOẢN
           </Link>
 
@@ -148,10 +157,7 @@ export default function Header({ cartCount = 0 }) {
       </div>
 
       {showSearch && (
-        <form
-          className="header-search"
-          onSubmit={handleSearch}
-        >
+        <form className="header-search" onSubmit={handleSearch}>
           <input
             type="text"
             placeholder="Tìm kiếm ..."
