@@ -1,9 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router';
 import { useAuth } from '../context/AuthContext';
 import '../styles/login.css';
 
-export default function LoginForm({ onSuccess }) {
+  interface LoginFormProps {
+    onSuccess?: () => void;
+  }
+
+export default function LoginForm({ onSuccess }: LoginFormProps) {
   const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -20,7 +24,7 @@ export default function LoginForm({ onSuccess }) {
     }
   }, [location.state]);
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -31,12 +35,12 @@ export default function LoginForm({ onSuccess }) {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     const result = login(formData.username, formData.password);
 
     if (!result.success) {
-      setError(result.message);
+      setError(result.message || '');
       return;
     }
 
@@ -105,3 +109,4 @@ export default function LoginForm({ onSuccess }) {
     </div>
   );
 }
+

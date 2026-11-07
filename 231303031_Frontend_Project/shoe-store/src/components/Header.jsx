@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { useAuth } from '../context/AuthContext';
+import { useCart } from '../context/CartContext';
 import LoginDropdown from './LoginDropdown';
 import '../styles/header.css';
 
@@ -39,6 +40,7 @@ const menuList = [
 
 export default function Header({ cartCount = 0 }) {
   const { user, logout } = useAuth();
+  const { totalItems } = useCart();
   const [openMenu, setOpenMenu] = useState('');
   const [showSearch, setShowSearch] = useState(false);
   const [keyword, setKeyword] = useState('');
@@ -109,7 +111,7 @@ export default function Header({ cartCount = 0 }) {
                 <circle cx="18" cy="20" r="1.5" />
               </svg>
 
-              <span className="cart-count">{cartCount}</span>
+              <span className="cart-count">{totalItems}</span>
             </span>
           </Link>
 
