@@ -1,6 +1,14 @@
-import { RouterProvider } from 'react-router/dom';
+import { RouterProvider } from 'react-router-dom';
 import { router } from './routes/Router';
+import { AuthProvider } from './context/AuthContext';
+import { CartProvider } from './context/CartContext';
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <AuthProvider>
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
+    </AuthProvider>
+  );
 }
