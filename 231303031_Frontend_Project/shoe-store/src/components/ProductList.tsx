@@ -1,35 +1,58 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducts } from '../services/productService';
-import { load } from '../store/slice/ProductListSlice';
-import type { Product } from '../store/slice/ProductListSlice';
 import ProductItems from './ProductItems';
+import { fetchProducts } from '../store/slice/ProductListSlice';
+import type { AppDispatch, RootState } from '../store/store';
 import '../styles/products.css';
 
 export default function ProductList() {
-    const products = useSelector((state: { products: Product[] }) => state.products);
-    const dispatch = useDispatch();
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
+    const { products, loading, error } = useSelector(
+        (state: RootState) => state.products
+    );
+
+    const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {
-        async function fetchProducts() {
-            try {
-                const data = await getProducts();
-                dispatch(load(data));
-            } catch (err) {
-                setError(err instanceof Error ? err.message : 'Không tải được sản phẩm.');
-            } finally {
-                setLoading(false);
-            }
-        }
-
-        fetchProducts();
+        dispatch(fetchProducts());
     }, [dispatch]);
 
-    if (loading) return <p>Đang tải sản phẩm...</p>;
-    if (error) return <p className="product-error">{error}</p>;
-    if (products.length === 0) return <p>Chưa có sản phẩm.</p>;
+    if (loading) {
+        return (
+            <div className="product-state" aria-busy="true">
+                <p className="product-loading">Đang tải sản phẩm...</p>
+
+                <div className="product-skeleton-grid">
+                    {[0, 1, 2, 3].map((item) => (
+                        <div key={item} className="product-skeleton-card">
+                            <div className="product-skeleton-media" />
+                            <div className="product-skeleton-line" />
+                            <div className="product-skeleton-line product-skeleton-line--short" />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="product-state product-state--error" role="alert">
+                <p className="product-error">{error}</p>
+
+                <button
+                    type="button"
+                    className="product-retry"
+                    onClick={() => dispatch(fetchProducts())}
+                >
+                    Thử lại
+                </button>
+            </div>
+        );
+    }
+
+    if (products.length === 0) {
+        return <p className="product-empty">Chưa có sản phẩm.</p>;
+    }
 
     return (
         <div className="product-list">
