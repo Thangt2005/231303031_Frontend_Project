@@ -33,6 +33,19 @@
 .store-header-links a { color: #333; text-decoration: none; }
 .store-header-links a:hover { color: #17654e; }
 .store-header-links .store-cart-link { padding: 8px 16px; border: 1px solid #17654e; border-radius: 4px; color: #17654e; }
+.store-cart-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 10px;
+  background: #17654e;
+  color: #fff;
+  font-size: 12px;
+  line-height: 1;
+}
 .store-nav-bar { background: #17654e; }
 .store-nav { display: flex; flex-wrap: wrap; }
 .store-nav a { color: white; padding: 12px 24px; text-decoration: none; }

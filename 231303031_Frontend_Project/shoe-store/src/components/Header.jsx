@@ -1,6 +1,6 @@
 import { Link, NavLink } from 'react-router';
 
-export default function Header() {
+export default function Header({ cartCount = 0 }) {
   return (
     <header className="store-header">
       <div className="store-topbar">
@@ -38,6 +38,9 @@ export default function Header() {
               <circle cx="18" cy="21" r="1" />
             </svg>
             <span>Giỏ hàng</span>
+            {cartCount > 0 && (
+              <span className="store-cart-count">{cartCount}</span>
+            )}
           </Link>
         </div>
       </div>
