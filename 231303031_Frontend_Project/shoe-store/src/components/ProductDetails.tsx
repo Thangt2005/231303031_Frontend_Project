@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import type { CSSProperties } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router';
 import { useCart } from '../context/CartContext';
-import { fetchProducts } from '../store/slice/ProductListSlice';
-import type { AppDispatch, RootState } from '../store/Store';
-import type { Product } from '../types/Product';
+import type { Product } from '../store/slice/ProductListSlice';
 import '../styles/product-detail.css';
 
 function formatPrice(value: number) {
@@ -176,12 +174,13 @@ function ProductNotFound() {
 export function ProductDetail() {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
-    const dispatch = useDispatch<AppDispatch>();
     const { addToCart } = useCart();
 
-    const { products, loading, error } = useSelector(
-        (state: RootState) => state.products
+    const products = useSelector(
+        (state: { products: Product[] }) => state.products || []
     );
+    const loading = false;
+    const error = '';
 
     const [quantity, setQuantity] = useState(1);
     const [activeView, setActiveView] = useState(0);
@@ -189,12 +188,6 @@ export function ProductDetail() {
     const [selectedSize, setSelectedSize] = useState<number | null>(null);
     const [openSection, setOpenSection] = useState<AccordionKey | ''>('description');
     const [actionMessage, setActionMessage] = useState('');
-
-    useEffect(() => {
-        if (products.length === 0 && !loading && !error) {
-            dispatch(fetchProducts());
-        }
-    }, [dispatch, products.length, loading, error]);
 
     const product = products.find((item) => String(item.id) === String(id));
 
@@ -220,7 +213,7 @@ export function ProductDetail() {
             return (
                 <ProductDetailError
                     message={error}
-                    onRetry={() => dispatch(fetchProducts())}
+                    onRetry={() => window.location.reload()}
                 />
             );
         }
