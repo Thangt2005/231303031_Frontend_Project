@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router';
+import { Link, useNavigation, useParams } from 'react-router';
+import { useCart } from '../context/CartContext';
 import '../styles/products.css';
 
 function formatPrice(value) {
@@ -9,24 +10,49 @@ function formatPrice(value) {
 
 export default function ProductDetail() {
   const { id } = useParams();
-  const products = useSelector((state) => state.products);
+  const navigation = useNavigation();
+  const { addToCart } = useCart();
+  const products = useSelector((state) => state.products || []);
   const product = products.find((item) => String(item.id) === String(id));
 
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedColor, setSelectedColor] = useState('');
+  const [notice, setNotice] = useState('');
 
   useEffect(() => {
     setSelectedSize(null);
     setSelectedColor('');
-  }, [id]);
+    setNotice('');
+  }, [id, product]);
 
-  if (!product) {
+  if (navigation.state === 'loading') {
     return (
       <div className="product-detail-status">
-        <p className="product-error">Không tìm thấy sản phẩm.</p>
-        <Link to="/products" className="product-detail-back">
-          ← Quay lại danh sách sản phẩm
-        </Link>
+        <p className="product-loading">Đang tải thông tin sản phẩm...</p>
+      </div>
+    );
+  }
+
+  if (!product) {
+    if (products.length === 0) {
+      return (
+        <div className="product-detail-status">
+          <p className="product-loading">Đang tải thông tin sản phẩm...</p>
+        </div>
+      );
+    }
+
+    return (
+      <div className="product-detail-status">
+        <p className="product-error">Không tìm thấy sản phẩm hoặc đã xảy ra lỗi khi tải dữ liệu.</p>
+        <div className="product-detail-actions">
+          <button type="button" className="product-detail-btn" onClick={() => window.location.reload()}>
+            Thử lại
+          </button>
+          <Link to="/products" className="product-detail-back">
+            ← Quay lại danh sách sản phẩm
+          </Link>
+        </div>
       </div>
     );
   }
@@ -37,6 +63,13 @@ export default function ProductDetail() {
   const discountPercent = hasDiscount
     ? Math.round((1 - product.price / product.originalPrice) * 100)
     : 0;
+  const isAvailable = Number(product.stock) > 0;
+
+  const handleAddToCart = () => {
+    if (!isAvailable) return;
+    addToCart(product, 1);
+    setNotice(`Đã thêm "${product.name}" vào giỏ hàng.`);
+  };
 
   return (
     <div className="product-detail">
@@ -109,6 +142,19 @@ export default function ProductDetail() {
               ))}
             </div>
           </div>
+
+          <div className="product-detail-actions">
+            <button
+              type="button"
+              className="product-detail-btn"
+              onClick={handleAddToCart}
+              disabled={!isAvailable}
+            >
+              {isAvailable ? 'Thêm vào giỏ' : 'Hết hàng'}
+            </button>
+          </div>
+
+          {notice && <p className="product-detail-notice">{notice}</p>}
         </div>
       </div>
     </div>
