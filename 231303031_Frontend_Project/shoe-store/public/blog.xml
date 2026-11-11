@@ -1,7 +1,6 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- Blog du phong -->
+<!-- Blog dự phòng -->
 <rss version="2.0"
      xmlns:content="http://purl.org/rss/1.0/modules/content/"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
@@ -9,170 +8,325 @@
   <channel>
     <title>Shoe Store Blog</title>
     <link>https://shoestore.vn/blog</link>
-    <description>Kinh nghiệm chọn giày, phối đồ và chăm sóc giày</description>
+    <description>Kinh nghiệm chọn giày, phối đồ và chăm sóc giày.</description>
     <language>vi</language>
 
-    <!-- Bai 1 -->
+    <!-- Bài 1 -->
     <item>
-      <title>Cách chọn size giày chuẩn khi mua online</title>
+      <title>Cách chọn size giày khi mua online</title>
       <guid isPermaLink="false">cach-chon-size-giay-online</guid>
       <link>https://shoestore.vn/blog/cach-chon-size-giay-online</link>
-      <dc:creator>Shoe Store</dc:creator>
+      <dc:creator>SHOE STORE</dc:creator>
       <category>Chọn giày</category>
       <pubDate>Sun, 01 Nov 2026 09:00:00 +0700</pubDate>
-      <description>Đo chiều dài bàn chân, đối chiếu bảng size của từng hãng và cộng thêm khoảng trống ở mũi giày để không phải đổi trả.</description>
+      <description>Hướng dẫn đo bàn chân, đọc bảng size và kiểm tra độ vừa của giày trước khi quyết định giữ sản phẩm.</description>
+
       <content:encoded><![CDATA[
-        <p>Mua giày online tiện nhưng dễ chọn sai size. Chỉ cần 3 bước dưới đây là bạn chọn được đôi vừa chân.</p>
+        <p>Khi mua giày online, bạn không nên chỉ dựa vào size của đôi giày đang mang. Mỗi hãng và từng mẫu giày có thể có cách quy đổi kích thước khác nhau.</p>
 
-        <h2>Bước 1: Đo chiều dài bàn chân</h2>
-        <p>Đặt bàn chân lên tờ giấy, đánh dấu điểm gót và đầu ngón dài nhất rồi đo khoảng cách. Nên đo vào buổi chiều vì lúc đó chân hơi nở hơn buổi sáng.</p>
-
-        <h2>Bước 2: Xem bảng size của đúng hãng</h2>
-        <p>Cùng là size 40 nhưng Nike, Adidas và Converse có thể chênh nhau 0,5 cm. Luôn xem bảng size trong trang chi tiết sản phẩm.</p>
-
-        <h2>Bước 3: Cộng thêm khoảng trống</h2>
+        <h2>1. Chuẩn bị trước khi đo</h2>
         <ul>
-          <li>Giày sneaker: cộng 0,5 – 1 cm.</li>
-          <li>Giày chạy bộ: cộng khoảng 1 cm vì chân sẽ nở khi chạy.</li>
-          <li>Giày da: cộng 0,5 cm, da sẽ giãn nhẹ sau vài tuần.</li>
+          <li>Một tờ giấy lớn hơn bàn chân.</li>
+          <li>Bút và thước có đơn vị centimet.</li>
+          <li>Đôi tất bạn thường mang cùng loại giày định mua.</li>
+          <li>Mặt sàn bằng phẳng để đứng đo.</li>
         </ul>
 
-        <p>Nếu vẫn phân vân giữa hai size, hãy chọn size lớn hơn và dùng thêm lót giày.</p>
+        <h2>2. Cách đo bàn chân</h2>
+        <ol>
+          <li>Đặt giấy trên sàn, sát một bức tường.</li>
+          <li>Đứng lên giấy, đặt gót chân chạm nhẹ vào tường và giữ bàn chân tự nhiên.</li>
+          <li>Đánh dấu vị trí đầu ngón chân dài nhất. Ngón dài nhất không nhất thiết là ngón cái.</li>
+          <li>Đo khoảng cách từ mép giấy sát tường đến điểm vừa đánh dấu.</li>
+          <li>Đo cả hai chân và ghi lại kết quả. Nếu có chênh lệch, dùng số đo của chân lớn hơn để đối chiếu.</li>
+        </ol>
+
+        <h2>3. Đối chiếu với bảng size</h2>
+        <ul>
+          <li>Mở bảng size dành cho đúng hãng và mẫu giày đang xem.</li>
+          <li>Kiểm tra bảng đang ghi chiều dài bàn chân hay chiều dài bên trong giày.</li>
+          <li>Không tự cộng thêm chiều dài nếu hướng dẫn của hãng đã tính khoảng trống cần thiết.</li>
+          <li>Chú ý hệ size EU, US hoặc UK để tránh chọn nhầm.</li>
+          <li>Nếu bàn chân bè hoặc mu chân cao, nên hỏi thêm về độ rộng và phom giày.</li>
+        </ul>
+
+        <h2>4. Kiểm tra khi nhận giày</h2>
+        <ol>
+          <li>Mang tất và thử cả hai chiếc.</li>
+          <li>Buộc dây vừa phải rồi đứng lên, đi vài bước trên nền sạch.</li>
+          <li>Kiểm tra xem ngón chân có bị ép, hai bên bàn chân có bị bó hoặc gót có tuột nhiều không.</li>
+          <li>Giữ nguyên tem và hộp trong lúc thử để thuận tiện nếu cần đổi size.</li>
+        </ol>
+
+        <h2>5. Lưu ý</h2>
+        <p>Nếu phân vân giữa hai size, hãy hỏi cửa hàng dựa trên số đo và phom giày. Không nên mặc định chọn size lớn hơn hoặc dùng lót giày để sửa mọi trường hợp không vừa.</p>
       ]]></content:encoded>
     </item>
 
-    <!-- Bai 2 -->
+    <!-- Bài 2 -->
     <item>
       <title>Giày chạy bộ và sneaker thời trang khác nhau thế nào?</title>
       <guid isPermaLink="false">giay-chay-bo-va-sneaker</guid>
       <link>https://shoestore.vn/blog/giay-chay-bo-va-sneaker</link>
-      <dc:creator>Minh Khoa</dc:creator>
+      <dc:creator>SHOE STORE</dc:creator>
       <category>Kiến thức</category>
       <pubDate>Thu, 29 Oct 2026 19:30:00 +0700</pubDate>
-      <description>Nhìn bề ngoài khá giống nhau nhưng đế, đệm và trọng lượng của hai loại giày được thiết kế cho hai mục đích khác hẳn.</description>
+      <description>Phân biệt mục đích sử dụng của giày chạy bộ và sneaker thời trang, từ đó chọn đôi giày phù hợp với hoạt động hằng ngày.</description>
+
       <content:encoded><![CDATA[
-        <p>Nhiều bạn mua sneaker thời trang để chạy bộ rồi bị đau gót. Lý do nằm ở cấu tạo của giày.</p>
+        <p>Giày chạy bộ và sneaker thời trang có thể giống nhau về vẻ ngoài. Tuy nhiên, bạn nên xem mục đích thiết kế của từng mẫu thay vì chỉ dựa vào hình dáng hoặc độ dày của đế.</p>
 
-        <h2>Giày chạy bộ</h2>
+        <h2>1. Giày chạy bộ dùng để làm gì?</h2>
+        <p>Giày chạy bộ được thiết kế để phục vụ hoạt động chạy. Cấu tạo cụ thể thay đổi theo mẫu giày và loại bề mặt sử dụng.</p>
         <ul>
-          <li>Đệm dày ở gót và mũi để giảm lực va chạm.</li>
-          <li>Thân giày bằng lưới, nhẹ và thoáng khí.</li>
-          <li>Đế có rãnh giúp bàn chân gập tự nhiên khi chạy.</li>
+          <li>Phần thân giày thường chú trọng độ ôm và khả năng thoát khí.</li>
+          <li>Phần đệm và đế được thiết kế phù hợp với mục đích chạy của từng dòng.</li>
+          <li>Có mẫu dành cho đường bằng, có mẫu dành cho đường mòn.</li>
+          <li>Không phải đôi giày có đế dày nào cũng là giày chạy bộ.</li>
         </ul>
 
-        <h2>Sneaker thời trang</h2>
+        <h2>2. Sneaker thời trang dùng để làm gì?</h2>
+        <p>Sneaker thời trang thường chú trọng kiểu dáng, màu sắc và khả năng phối đồ.</p>
         <ul>
-          <li>Đế bằng, cứng hơn, thiên về kiểu dáng.</li>
-          <li>Chất liệu da hoặc canvas nên nặng và bí hơn.</li>
-          <li>Hợp để đi học, đi chơi, phối đồ hằng ngày.</li>
+          <li>Phù hợp với các hoạt động như đi học, gặp bạn bè hoặc đi chơi.</li>
+          <li>Có nhiều chất liệu: vải, da, vật liệu tổng hợp hoặc kết hợp nhiều loại.</li>
+          <li>Độ mềm, trọng lượng và độ thoáng khác nhau giữa các mẫu.</li>
+          <li>Không nên xem mọi đôi sneaker là giày chuyên dùng để tập luyện.</li>
         </ul>
 
-        <p>Nếu bạn chạy trên 3 km mỗi tuần, nên đầu tư một đôi giày chạy bộ riêng.</p>
-      ]]></content:encoded>
-    </item>
-
-    <!-- Bai 3 -->
-    <item>
-      <title>Vệ sinh giày sneaker trắng tại nhà chỉ trong 15 phút</title>
-      <guid isPermaLink="false">ve-sinh-sneaker-trang</guid>
-      <link>https://shoestore.vn/blog/ve-sinh-sneaker-trang</link>
-      <dc:creator>Thu Hà</dc:creator>
-      <category>Chăm sóc giày</category>
-      <pubDate>Mon, 26 Oct 2026 08:00:00 +0700</pubDate>
-      <description>Bàn chải mềm, nước ấm và một chút kem đánh răng là đủ để đôi giày trắng sạch như mới mà không bị ố vàng.</description>
-      <content:encoded><![CDATA[
-        <p>Giày trắng rất dễ bẩn nhưng cũng dễ làm sạch nếu bạn làm đúng cách.</p>
-
-        <h2>Chuẩn bị</h2>
-        <ul>
-          <li>Bàn chải đánh răng cũ (lông mềm)</li>
-          <li>Nước ấm pha một ít nước rửa chén</li>
-          <li>Kem đánh răng màu trắng</li>
-          <li>Khăn sạch</li>
-        </ul>
-
-        <h2>Các bước</h2>
+        <h2>3. Cách lựa chọn theo nhu cầu</h2>
         <ol>
-          <li>Tháo dây giày và lót giày, ngâm riêng trong nước xà phòng.</li>
-          <li>Chải nhẹ thân giày theo vòng tròn, không chà quá mạnh.</li>
-          <li>Phần đế bị ố thì bôi kem đánh răng, để 5 phút rồi chải sạch.</li>
-          <li>Lau lại bằng khăn ẩm và để khô ở nơi thoáng gió.</li>
+          <li>Xác định hoạt động chính: đi học, đi bộ, chạy bộ hay phối đồ.</li>
+          <li>Đọc phần mô tả công dụng của sản phẩm.</li>
+          <li>Chọn size phù hợp và thử cảm giác khi di chuyển.</li>
+          <li>Cân nhắc bề mặt sử dụng, thời gian mang và khả năng vệ sinh.</li>
         </ol>
 
-        <p><strong>Lưu ý:</strong> không phơi giày trắng trực tiếp dưới nắng gắt vì sẽ làm keo và đế bị vàng.</p>
+        <h2>4. Ví dụ dễ hình dung</h2>
+        <ul>
+          <li>Nếu chủ yếu đi học và phối cùng quần jeans, bạn có thể ưu tiên sneaker có phom vừa chân và dễ phối màu.</li>
+          <li>Nếu mua để chạy bộ, hãy tìm dòng giày được hãng giới thiệu dành cho hoạt động chạy.</li>
+          <li>Nếu dùng cho nhiều hoạt động, hãy xác định hoạt động quan trọng nhất thay vì chỉ chọn theo hình thức.</li>
+        </ul>
+
+        <h2>5. Lưu ý</h2>
+        <p>Không có một mẫu giày phù hợp với tất cả mọi người. Đôi giày phù hợp cần đáp ứng cả mục đích sử dụng và độ vừa của bàn chân.</p>
       ]]></content:encoded>
     </item>
 
-    <!-- Bai 4 -->
+    <!-- Bài 3 -->
+    <item>
+      <title>Cách vệ sinh giày sneaker trắng tại nhà</title>
+      <guid isPermaLink="false">ve-sinh-sneaker-trang</guid>
+      <link>https://shoestore.vn/blog/ve-sinh-sneaker-trang</link>
+      <dc:creator>SHOE STORE</dc:creator>
+      <category>Chăm sóc giày</category>
+      <pubDate>Mon, 26 Oct 2026 08:00:00 +0700</pubDate>
+      <description>Hướng dẫn chuẩn bị dụng cụ, làm sạch từng phần và hong khô sneaker trắng theo chất liệu của giày.</description>
+
+      <content:encoded><![CDATA[
+        <p>Trước khi vệ sinh, hãy kiểm tra chất liệu và hướng dẫn chăm sóc của nhà sản xuất. Không nên áp dụng cùng một cách giặt cho giày vải, da trơn và da lộn.</p>
+
+        <h2>1. Dụng cụ cần chuẩn bị</h2>
+        <ul>
+          <li>Bàn chải lông mềm.</li>
+          <li>Khăn mềm sạch.</li>
+          <li>Một ít nước sạch.</li>
+          <li>Dung dịch vệ sinh phù hợp với chất liệu giày.</li>
+          <li>Giấy trắng sạch để hỗ trợ giữ phom khi hong khô.</li>
+        </ul>
+
+        <h2>2. Kiểm tra trước khi làm sạch</h2>
+        <ol>
+          <li>Đọc nhãn hoặc hướng dẫn vệ sinh của sản phẩm.</li>
+          <li>Thử dung dịch trên một vùng nhỏ, ít nhìn thấy.</li>
+          <li>Nếu có dấu hiệu phai màu hoặc thay đổi bề mặt, dừng lại và chọn cách xử lý khác.</li>
+        </ol>
+
+        <h2>3. Các bước vệ sinh</h2>
+        <ol>
+          <li>Tháo dây giày. Chỉ tháo lót nếu lót có thể lấy ra mà không làm hỏng giày.</li>
+          <li>Dùng bàn chải mềm loại bỏ bụi và đất khô trên bề mặt.</li>
+          <li>Làm sạch dây giày riêng theo hướng dẫn chất liệu.</li>
+          <li>Với phần thân cho phép lau ẩm, dùng khăn hoặc bàn chải mềm với lượng dung dịch vừa đủ. Làm sạch từng vùng nhỏ.</li>
+          <li>Vệ sinh phần đế ngoài riêng để tránh kéo bụi bẩn lên thân giày.</li>
+          <li>Lau lại bằng khăn sạch hơi ẩm để loại bỏ dung dịch còn sót.</li>
+        </ol>
+
+        <h2>4. Cách hong khô</h2>
+        <ul>
+          <li>Đặt giày ở nơi thoáng gió, tránh nguồn nhiệt trực tiếp.</li>
+          <li>Có thể đặt giấy trắng sạch bên trong để hỗ trợ giữ phom; thay khi giấy ẩm.</li>
+          <li>Chờ giày khô hoàn toàn rồi mới lắp lót, xỏ dây và sử dụng.</li>
+        </ul>
+
+        <h2>5. Những việc nên tránh</h2>
+        <ul>
+          <li>Không ngâm toàn bộ giày nếu nhà sản xuất không cho phép.</li>
+          <li>Không tự dùng thuốc tẩy, kem đánh răng hoặc chất tẩy mạnh cho mọi chất liệu.</li>
+          <li>Không dùng máy giặt, máy sấy nếu hướng dẫn sản phẩm không cho phép.</li>
+          <li>Với da lộn, dùng dụng cụ chuyên dụng thay vì làm ướt theo cách vệ sinh giày vải.</li>
+        </ul>
+      ]]></content:encoded>
+    </item>
+
+    <!-- Bài 4 -->
     <item>
       <title>4 cách phối giày Adidas Samba cho sinh viên</title>
       <guid isPermaLink="false">phoi-do-voi-adidas-samba</guid>
       <link>https://shoestore.vn/blog/phoi-do-voi-adidas-samba</link>
-      <dc:creator>Minh Khoa</dc:creator>
+      <dc:creator>SHOE STORE</dc:creator>
       <category>Phối đồ</category>
       <pubDate>Thu, 22 Oct 2026 20:00:00 +0700</pubDate>
-      <description>Samba đế mỏng, dáng thấp nên rất dễ phối. Đây là 4 công thức đơn giản để đi học, đi chơi hay đi thực tập.</description>
+      <description>Bốn gợi ý phối đồ với Adidas Samba cho các dịp đi học, đi chơi, đi thực tập và mặc theo phong cách thể thao.</description>
+
       <content:encoded><![CDATA[
-        <p>Adidas Samba là mẫu giày "quốc dân" vì kiểu dáng gọn và hợp nhiều phong cách.</p>
+        <p>Bạn có thể bắt đầu phối đồ với Samba bằng những món cơ bản đang có trong tủ. Các cách dưới đây là gợi ý để điều chỉnh theo sở thích và hoàn cảnh sử dụng.</p>
 
+        <h2>1. Phối đồ đi học</h2>
+        <ul>
+          <li>Áo: áo thun trơn hoặc sơ mi đơn giản.</li>
+          <li>Quần: jeans ống suông hoặc quần kaki.</li>
+          <li>Phụ kiện: ba lô và tất có màu phù hợp với áo hoặc giày.</li>
+        </ul>
+        <p>Cách phối: chọn áo và quần có màu dễ kết hợp, sau đó dùng màu giày làm điểm nhấn. Ưu tiên trang phục thoải mái khi ngồi học và di chuyển.</p>
+
+        <h2>2. Phối đồ đi chơi cuối tuần</h2>
+        <ul>
+          <li>Áo: áo polo hoặc áo thun có họa tiết nhỏ.</li>
+          <li>Quần: quần short hoặc jeans tùy thời tiết.</li>
+          <li>Phụ kiện: túi đeo chéo hoặc mũ nếu cần.</li>
+        </ul>
+        <p>Cách phối: khi áo đã có nhiều họa tiết, có thể chọn quần và phụ kiện đơn giản để tổng thể dễ nhìn.</p>
+
+        <h2>3. Phối đồ đi thực tập</h2>
+        <ul>
+          <li>Áo: sơ mi hoặc polo gọn gàng.</li>
+          <li>Quần: quần tây hoặc kaki có độ dài phù hợp.</li>
+          <li>Giày: giữ sạch, buộc dây gọn.</li>
+        </ul>
+        <p>Cách phối: ưu tiên màu trung tính và kiểm tra quy định trang phục của nơi thực tập. Một số nơi có thể yêu cầu loại giày khác.</p>
+
+        <h2>4. Phối theo phong cách thể thao</h2>
+        <ul>
+          <li>Áo: hoodie, sweatshirt hoặc áo thun.</li>
+          <li>Quần: jogger hoặc quần thể thao dáng gọn.</li>
+          <li>Phụ kiện: tất đơn giản, hạn chế quá nhiều màu tương phản.</li>
+        </ul>
+        <p>Lưu ý: phối theo phong cách thể thao không có nghĩa đôi giày phù hợp với mọi hoạt động tập luyện.</p>
+
+        <h2>5. Kiểm tra trước khi ra ngoài</h2>
         <ol>
-          <li><strong>Đi học:</strong> quần jeans ống suông, áo thun trơn, thêm áo khoác sơ mi khi trời lạnh.</li>
-          <li><strong>Đi chơi cuối tuần:</strong> quần short kaki, áo polo và tất trắng cổ thấp.</li>
-          <li><strong>Đi thực tập:</strong> quần tây ống đứng màu be, áo sơ mi cài nút. Nên chọn Samba màu đen cho lịch sự.</li>
-          <li><strong>Phong cách thể thao:</strong> quần jogger, áo hoodie rộng.</li>
+          <li>Xem trang phục có phù hợp với thời tiết và nơi đến không.</li>
+          <li>Kiểm tra gấu quần có chạm đất hoặc che giày quá nhiều không.</li>
+          <li>Làm sạch vết bẩn dễ thấy và buộc dây gọn.</li>
+          <li>Điều chỉnh phụ kiện để bạn cảm thấy thoải mái và tự tin.</li>
         </ol>
-
-        <p>Mẹo nhỏ: chọn màu tất trùng với màu quần để chân trông dài hơn.</p>
       ]]></content:encoded>
     </item>
 
-    <!-- Bai 5 -->
+    <!-- Bài 5 -->
     <item>
-      <title>Khi nào bạn nên thay một đôi giày chạy bộ mới?</title>
+      <title>Khi nào nên kiểm tra và thay giày chạy bộ?</title>
       <guid isPermaLink="false">khi-nao-thay-giay-chay-bo</guid>
       <link>https://shoestore.vn/blog/khi-nao-thay-giay-chay-bo</link>
-      <dc:creator>Shoe Store</dc:creator>
+      <dc:creator>SHOE STORE</dc:creator>
       <category>Kiến thức</category>
       <pubDate>Sun, 18 Oct 2026 07:00:00 +0700</pubDate>
-      <description>Một đôi giày chạy bộ thường dùng tốt trong khoảng 500 – 800 km. Có 3 dấu hiệu cho thấy đã đến lúc bạn nên thay giày.</description>
-      <content:encoded><![CDATA[
-        <p>Lớp đệm của giày chạy bộ sẽ xẹp dần theo thời gian, kể cả khi nhìn bên ngoài giày vẫn còn mới.</p>
+      <description>Cách kiểm tra đế, thân giày và độ vừa để đánh giá tình trạng giày chạy bộ, thay vì chỉ dựa vào thời gian đã sử dụng.</description>
 
-        <h2>3 dấu hiệu cần thay giày</h2>
+      <content:encoded><![CDATA[
+        <p>Thời gian sử dụng của giày phụ thuộc vào mẫu giày, tần suất mang, bề mặt chạy và cách bảo quản. Không nên áp dụng một mốc thay giày cố định cho tất cả các đôi.</p>
+
+        <h2>1. Kiểm tra đế ngoài</h2>
         <ul>
-          <li>Đế ngoài bị mòn phẳng, mất các rãnh bám.</li>
-          <li>Bấm vào đệm gót thấy cứng, không còn đàn hồi.</li>
-          <li>Sau khi chạy bị đau gối hoặc đau gót dù chạy quãng đường quen thuộc.</li>
+          <li>Quan sát vùng gót và phía trước bàn chân.</li>
+          <li>Chú ý vị trí bị mòn rõ hoặc mất phần hoa văn bám.</li>
+          <li>Kiểm tra xem đế có bị nứt, bong hoặc tách khỏi thân giày không.</li>
+          <li>So sánh cả hai chiếc để nhận ra sự khác biệt về mức độ hao mòn.</li>
         </ul>
 
-        <p>Nếu chạy khoảng 20 km mỗi tuần, bạn nên thay giày sau 6 – 9 tháng.</p>
+        <h2>2. Kiểm tra thân và phần giữ gót</h2>
+        <ul>
+          <li>Xem thân giày có bị rách hoặc giãn nhiều không.</li>
+          <li>Kiểm tra các lỗ xỏ dây, đường may và vùng tiếp xúc với gót.</li>
+          <li>Chú ý trường hợp giày không còn giữ chân vừa vặn dù đã buộc dây phù hợp.</li>
+        </ul>
+
+        <h2>3. Kiểm tra cảm giác sử dụng</h2>
+        <ol>
+          <li>Mang cùng loại tất thường dùng.</li>
+          <li>Đi thử trên bề mặt quen thuộc.</li>
+          <li>Ghi nhận những thay đổi rõ so với trước, chẳng hạn giày bị lệch phom hoặc có chi tiết cọ vào chân.</li>
+          <li>Nếu thấy hư hỏng ảnh hưởng đến việc sử dụng, nên ngừng dùng đôi đó cho buổi chạy và kiểm tra thêm.</li>
+        </ol>
+
+        <h2>4. Theo dõi quá trình sử dụng</h2>
+        <ul>
+          <li>Ghi lại thời điểm bắt đầu dùng giày.</li>
+          <li>Theo dõi quãng đường nếu ứng dụng tập luyện của bạn hỗ trợ.</li>
+          <li>Tham khảo hướng dẫn của hãng cho đúng mẫu giày.</li>
+          <li>Kiểm tra định kỳ thay vì chỉ chờ đến khi giày hỏng rõ rệt.</li>
+        </ul>
+
+        <h2>5. Trước khi quyết định thay</h2>
+        <p>Vệ sinh và xem lại tình trạng thực tế của giày. Phân biệt vết bẩn hoặc hao mòn hình thức với hư hỏng ảnh hưởng đến công dụng. Nếu chưa rõ, có thể nhờ cửa hàng hỗ trợ kiểm tra.</p>
       ]]></content:encoded>
     </item>
 
-    <!-- Bai 6 -->
+    <!-- Bài 6 -->
     <item>
-      <title>Bảo quản giày da trong mùa mưa</title>
+      <title>Cách bảo quản giày da trong mùa mưa</title>
       <guid isPermaLink="false">bao-quan-giay-da-mua-mua</guid>
       <link>https://shoestore.vn/blog/bao-quan-giay-da-mua-mua</link>
-      <dc:creator>Thu Hà</dc:creator>
+      <dc:creator>SHOE STORE</dc:creator>
       <category>Chăm sóc giày</category>
       <pubDate>Tue, 13 Oct 2026 18:15:00 +0700</pubDate>
-      <description>Giày da bị ướt rất dễ nứt và mốc. Vài thói quen nhỏ giúp đôi giày da của bạn bền đẹp qua mùa mưa.</description>
-      <content:encoded><![CDATA[
-        <p>Da thật hút nước, nếu để ướt lâu sẽ bị cứng, nứt và có mùi.</p>
+      <description>Hướng dẫn xử lý giày da bị ẩm, hong khô và cất giữ đúng cách, đồng thời chọn sản phẩm chăm sóc phù hợp với từng loại da.</description>
 
-        <h2>Khi giày bị ướt</h2>
+      <content:encoded><![CDATA[
+        <p>Giày da cần được chăm sóc theo loại da và lớp hoàn thiện bề mặt. Da trơn, da lộn và da phủ bóng có thể cần những sản phẩm khác nhau.</p>
+
+        <h2>1. Chuẩn bị trước khi ra ngoài</h2>
+        <ul>
+          <li>Kiểm tra dự báo thời tiết và chọn giày phù hợp với lịch di chuyển.</li>
+          <li>Đọc hướng dẫn chăm sóc của nhà sản xuất.</li>
+          <li>Nếu dùng sản phẩm bảo vệ bề mặt, chọn loại phù hợp và thử ở một vùng nhỏ trước.</li>
+          <li>Không xem dung dịch chống thấm là cách bảo đảm giày có thể ngâm nước.</li>
+        </ul>
+
+        <h2>2. Xử lý khi giày bị ướt</h2>
         <ol>
-          <li>Lau sạch bùn đất bằng khăn mềm.</li>
-          <li>Nhét giấy báo vào trong để hút ẩm, thay giấy sau vài giờ.</li>
-          <li>Để khô tự nhiên, tuyệt đối không dùng máy sấy hay phơi nắng.</li>
+          <li>Tháo dây và mở rộng miệng giày để dễ kiểm tra bên trong.</li>
+          <li>Dùng khăn mềm thấm nước trên bề mặt. Tránh chà mạnh.</li>
+          <li>Với da trơn cho phép lau ẩm, nhẹ nhàng loại bỏ bùn đất bằng khăn phù hợp.</li>
+          <li>Đặt giấy trắng sạch vào trong để hỗ trợ hút ẩm và giữ phom. Không nhồi quá chặt.</li>
+          <li>Thay giấy khi giấy đã ẩm.</li>
+          <li>Để giày khô tự nhiên ở nơi thoáng gió, tránh máy sấy nóng và nguồn nhiệt trực tiếp.</li>
         </ol>
 
-        <h2>Phòng ngừa</h2>
+        <h2>3. Chăm sóc sau khi giày khô</h2>
         <ul>
-          <li>Xịt chống thấm trước mùa mưa.</li>
-          <li>Đánh xi hoặc dưỡng da 2 – 3 tuần một lần.</li>
-          <li>Cất giày trong hộp có gói hút ẩm.</li>
+          <li>Kiểm tra bề mặt, đường may và phần đế.</li>
+          <li>Chỉ dùng xi hoặc chất dưỡng nếu phù hợp với loại da.</li>
+          <li>Làm theo lượng dùng và cách dùng trên nhãn sản phẩm.</li>
+          <li>Với da lộn, dùng dụng cụ chăm sóc dành riêng cho da lộn.</li>
+        </ul>
+
+        <h2>4. Cách cất giữ</h2>
+        <ol>
+          <li>Đảm bảo giày đã khô trước khi cất.</li>
+          <li>Đặt ở nơi sạch, thoáng và tránh ánh nắng trực tiếp.</li>
+          <li>Nếu dùng gói hút ẩm, làm theo hướng dẫn của gói và kiểm tra định kỳ.</li>
+          <li>Không để giày ẩm lâu trong túi kín hoặc hộp kín.</li>
+        </ol>
+
+        <h2>5. Những việc nên tránh</h2>
+        <ul>
+          <li>Không dùng cùng một loại xi cho mọi chất liệu.</li>
+          <li>Không dùng giấy có mực dễ lem để nhét vào giày sáng màu.</li>
+          <li>Không cố làm khô nhanh bằng nhiệt cao.</li>
+          <li>Nếu giày bị mốc hoặc bong bề mặt nhiều, nên hỏi nơi chăm sóc giày trước khi tự xử lý.</li>
         </ul>
       ]]></content:encoded>
     </item>
