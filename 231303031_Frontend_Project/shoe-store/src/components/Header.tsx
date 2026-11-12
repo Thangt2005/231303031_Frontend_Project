@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router';
+import { useAuth } from '../context/AuthContext';
+import { useCart } from '../context/CartContext';
+import LoginDropdown from './LoginDropdown';
 import '../styles/header.css';
 
 type HeaderProps = {
@@ -18,7 +21,6 @@ type Menu = {
   children?: SubMenu[];
 };
 
-// Danh sách menu
 const menuList: Menu[] = [
   { title: 'Trang chủ', path: '/' },
   {
@@ -53,6 +55,8 @@ const menuList: Menu[] = [
 ];
 
 export default function Header({ cartCount = 0 }: HeaderProps) {
+  const { user, logout } = useAuth();
+  const { totalItems } = useCart();
   const [openMenu, setOpenMenu] = useState('');
   const [showSearch, setShowSearch] = useState(false);
   const [keyword, setKeyword] = useState('');
@@ -60,7 +64,6 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
 
   const navigate = useNavigate();
 
-  // Mở hoặc đóng menu con
   const toggleSubMenu = (title: string) => {
     if (openMenu === title) {
       setOpenMenu('');
@@ -69,13 +72,11 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
     }
   };
 
-  // Đóng menu
   const closeAllMenu = () => {
     setOpenMenu('');
     setShowMobileMenu(false);
   };
 
-  // Tìm kiếm
   const handleSearch = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -92,18 +93,18 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
     <header className="header">
       <div className="header-top">
         <div className="header-hotline">
-          HOTLINE: <a href="tel:88888888">123456789</a>
+          HOTLINE: <a href="tel:88888888">8888 8888</a>
         </div>
 
         <Link to="/" className="header-logo" onClick={closeAllMenu}>
           <span className="logo-name">SHOE STORE</span>
-          <span className="logo-slogan">SHOp GIÀY CHÍNH HÃNG</span>
+          <span className="logo-slogan">GIÀY CHÍNH HÃNG</span>
         </Link>
 
         <div className="header-actions">
-          <Link to="/login" className="action-link hide-mobile">
-            TÀI KHOẢN
-          </Link>
+          <div className="hide-mobile">
+            <LoginDropdown />
+          </div>
 
           <Link to="/cart" className="action-link">
             <span className="hide-mobile">GIỎ HÀNG</span>
@@ -122,7 +123,7 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
                 <circle cx="18" cy="20" r="1.5" />
               </svg>
 
-              <span className="cart-count">{cartCount}</span>
+              <span className="cart-count">{totalItems || cartCount}</span>
             </span>
           </Link>
 
@@ -225,13 +226,27 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
           ))}
 
           <li className="nav-item show-mobile">
-            <Link
-              to="/login"
-              className="nav-link"
-              onClick={closeAllMenu}
-            >
-              Tài khoản
-            </Link>
+            {user ? (
+              <button
+                type="button"
+                className="nav-link"
+                style={{ background: 'none', border: 'none', textAlign: 'left', cursor: 'pointer', width: '100%' }}
+                onClick={() => {
+                  logout();
+                  closeAllMenu();
+                }}
+              >
+                Đăng xuất ({user.username})
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                className="nav-link"
+                onClick={closeAllMenu}
+              >
+                Tài khoản
+              </Link>
+            )}
           </li>
         </ul>
       </nav>
