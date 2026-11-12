@@ -7,8 +7,12 @@ import {
   Blog,
   Login,
   NotFound,
+  Checkout,
+  Orders,
 } from '../pages';
+import { Account } from '../pages';
 import Layout from '../layouts/Layout';
+import ProtectedRoute from './ProtectedRoute';
 import { store } from '../store/store';
 import { load } from '../store/slice/ProductListSlice';
 import type { Product } from '../store/slice/ProductListSlice';
@@ -393,6 +397,14 @@ export const router = createBrowserRouter([
       { path: 'cart', element: <Cart /> },
       { path: 'blog', element: <Blog /> },
       { path: 'login', element: <Login /> },
+      {
+        element: <ProtectedRoute />,
+        children: [
+          { path: 'checkout', element: <Checkout /> },
+          { path: 'account', element: <Account /> },
+          { path: 'orders', element: <Orders /> },
+        ],
+      },
       { path: '*', element: <NotFound /> },
     ],
   },
