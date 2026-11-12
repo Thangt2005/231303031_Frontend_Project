@@ -103,7 +103,7 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
         </button>
 
         <div className="login-form-footer">
-          Chưa có tài khoản? <Link to="/login">Đăng ký ngay</Link>
+          Chưa có tài khoản? <Link to="/register">Đăng ký ngay</Link>
         </div>
       </form>
     </div>

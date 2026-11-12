@@ -6,6 +6,7 @@ import {
   Cart,
   Blog,
   Login,
+  Register,
   NotFound,
   Checkout,
   Orders,
@@ -397,6 +398,7 @@ export const router = createBrowserRouter([
       { path: 'cart', element: <Cart /> },
       { path: 'blog', element: <Blog /> },
       { path: 'login', element: <Login /> },
+      { path: 'register', element: <Register /> },
       {
         element: <ProtectedRoute />,
         children: [
