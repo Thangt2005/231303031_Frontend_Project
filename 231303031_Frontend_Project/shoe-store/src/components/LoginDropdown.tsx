@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { useAuth } from '../context/AuthContext';
 import LoginForm from './LoginForm';
@@ -6,6 +6,7 @@ import '../styles/login.css';
 
 export default function LoginDropdown() {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const { user, logout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
@@ -16,6 +17,22 @@ export default function LoginDropdown() {
     }
   }, [location.state]);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
   const handleLoginSuccess = () => {
     setIsOpen(false);
     const target = location.state?.from || '/';
@@ -23,7 +40,7 @@ export default function LoginDropdown() {
   };
 
   return (
-    <div className="login-dropdown-wrapper">
+    <div className="login-dropdown-wrapper" ref={dropdownRef}>
       <button
         type="button"
         className="action-link login-toggle-btn"
@@ -54,4 +71,3 @@ export default function LoginDropdown() {
     </div>
   );
 }
-

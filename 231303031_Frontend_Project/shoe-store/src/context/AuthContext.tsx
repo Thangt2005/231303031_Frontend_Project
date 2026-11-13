@@ -10,9 +10,19 @@ export interface User {
   sdt: string;
 }
 
+export interface RegisterData {
+  username: string;
+  password: string;
+  name?: string;
+  email: string;
+  address?: string;
+  sdt?: string;
+}
+
 export interface AuthContextType {
   user: User | null;
   login: (username: string, password: string) => { success: boolean; message?: string };
+  register: (data: RegisterData) => { success: boolean; message?: string };
   logout: () => void;
 }
 
@@ -66,6 +76,15 @@ export const MOCK_USERS: User[] = [
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
+const getUsers = (): User[] => {
+  const saved = localStorage.getItem('users');
+  if (saved) {
+    return JSON.parse(saved);
+  }
+  localStorage.setItem('users', JSON.stringify(MOCK_USERS));
+  return MOCK_USERS;
+};
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(() => {
     const saved = localStorage.getItem('user');
@@ -73,7 +92,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   });
 
   const login = (username: string, password: string) => {
-    const found = MOCK_USERS.find(
+    const users = getUsers();
+    const found = users.find(
       (u) => u.username === username || u.email === username
     );
 
@@ -86,13 +106,43 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return { success: true };
   };
 
+  const register = (data: RegisterData) => {
+    const users = getUsers();
+
+    if (users.some((u) => u.username.toLowerCase() === data.username.toLowerCase())) {
+      return { success: false, message: 'Tên người dùng đã tồn tại' };
+    }
+
+    if (users.some((u) => u.email.toLowerCase() === data.email.toLowerCase())) {
+      return { success: false, message: 'Email đã được đăng ký' };
+    }
+
+    const newUser: User = {
+      id: Date.now(),
+      username: data.username,
+      password: data.password,
+      name: data.name || data.username,
+      email: data.email,
+      address: data.address || '',
+      sdt: data.sdt || '',
+    };
+
+    const updatedUsers = [...users, newUser];
+    localStorage.setItem('users', JSON.stringify(updatedUsers));
+
+    setUser(newUser);
+    localStorage.setItem('user', JSON.stringify(newUser));
+
+    return { success: true };
+  };
+
   const logout = () => {
     setUser(null);
     localStorage.removeItem('user');
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );
@@ -105,4 +155,3 @@ export function useAuth() {
   }
   return context;
 }
-
