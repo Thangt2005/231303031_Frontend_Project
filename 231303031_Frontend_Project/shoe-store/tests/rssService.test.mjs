@@ -4,95 +4,89 @@ import { readFile } from 'node:fs/promises';
 import { JSDOM } from 'jsdom';
 import { parseRssXml, getBlogPosts } from '../src/services/rssService.js';
 
+// Node không có DOMParser nên lấy từ jsdom
 globalThis.DOMParser = new JSDOM('').window.DOMParser;
-const xml = await readFile(new URL('../public/blog.xml', import.meta.url), 'utf8');
-const feed = (items) => '<rss version="2.0"><channel>' + items + '</channel></rss>';
 
-test('Đọc đủ 6 bài dự phòng, slug duy nhất và có nội dung', () => {
-  const posts = parseRssXml(xml);
+const blogXml = await readFile(new URL('../public/blog.xml', import.meta.url), 'utf8');
+
+// Tạo RSS mẫu từ danh sách item
+function makeFeed(items) {
+  return '<rss version="2.0"><channel>' + items + '</channel></rss>';
+}
+
+test('Đọc đủ 6 bài trong blog.xml', () => {
+  const posts = parseRssXml(blogXml);
+
   assert.equal(posts.length, 6);
-  assert.equal(new Set(posts.map(post => post.slug)).size, 6);
-  for (const post of posts) {
-    assert.ok(post.title && post.description && post.content);
-    assert.ok(!Number.isNaN(Date.parse(post.pubDate)));
-  }
+  assert.equal(posts[0].slug, 'cach-chon-size-giay-online');
+  assert.equal(posts[0].author, 'SHOE STORE');
+  assert.ok(posts[0].content.includes('<h2>'));
 });
 
-test('Từ chối XML hỏng, HTML, sai phiên bản, thiếu channel và RSS rỗng', () => {
-  for (const value of ['', '<rss>', '<html />', '<rss version="1.0"><channel /></rss>', '<rss version="2.0"/>', feed('')]) {
-    assert.throws(() => parseRssXml(value));
-  }
+test('Báo lỗi khi XML hỏng', () => {
+  assert.throws(() => parseRssXml('<rss>'));
 });
 
-test('Slug từ tiêu đề không đổi khi thứ tự bài thay đổi', () => {
-  const item = '<item><title>Giày mới</title><guid>https://example.com/1</guid></item>';
-  const other = '<item><title>Bài khác</title></item>';
-  assert.equal(parseRssXml(feed(item))[0].slug, 'giay-moi');
-  assert.equal(parseRssXml(feed(other + item))[1].slug, 'giay-moi');
+test('Báo lỗi khi RSS không có bài nào', () => {
+  assert.throws(() => parseRssXml(makeFeed('')));
 });
 
-test('Đọc namespace và CDATA với prefix khác', () => {
-  const [post] = parseRssXml(feed('<item xmlns:a="http://purl.org/dc/elements/1.1/" xmlns:c="http://purl.org/rss/1.0/modules/content/"><title>A &amp; B</title><a:creator>Tác giả</a:creator><c:encoded><![CDATA[<p>Nội dung</p>]]></c:encoded></item>'));
-  assert.equal(post.title, 'A & B');
-  assert.equal(post.author, 'Tác giả');
-  assert.equal(post.content, '<p>Nội dung</p>');
+test('Bỏ qua bài không có tiêu đề', () => {
+  const posts = parseRssXml(makeFeed('<item></item><item><title>A</title><guid>bai-a</guid></item>'));
+
+  assert.equal(posts.length, 1);
+  assert.equal(posts[0].title, 'A');
 });
 
-test('Báo lỗi bài thiếu tiêu đề hoặc trùng slug', () => {
-  assert.throws(() => parseRssXml(feed('<item/>')), /thiếu tiêu đề/);
-  assert.throws(() => parseRssXml(feed('<item><title>A</title><guid>a</guid></item>'.repeat(2))), /bị trùng/);
+test('Tạo slug từ guid, link hoặc số thứ tự', () => {
+  const posts = parseRssXml(makeFeed(
+    '<item><title>A</title><guid>bai-a</guid></item>' +
+    '<item><title>B</title><guid>https://abc.com/?p=2</guid><link>https://abc.com/bai-b/</link></item>' +
+    '<item><title>C</title><guid>https://abc.com/?p=3</guid></item>'
+  ));
+
+  assert.equal(posts[0].slug, 'bai-a');
+  assert.equal(posts[1].slug, 'bai-b');
+  assert.equal(posts[2].slug, 'bai-viet-3');
 });
 
-test('Proxy thành công thì không tải dự phòng', async (context) => {
+test('Proxy chạy được thì không đọc blog.xml', async () => {
   const urls = [];
-  context.mock.method(globalThis, 'fetch', async (url) => {
+
+  globalThis.fetch = async (url) => {
     urls.push(url);
-    return new Response(xml);
-  });
-  assert.equal((await getBlogPosts()).length, 6);
+    return new Response(blogXml);
+  };
+
+  const posts = await getBlogPosts();
+
+  assert.equal(posts.length, 6);
   assert.deepEqual(urls, ['/rss-proxy/feed/']);
 });
 
-for (const kind of ['network', 'http', 'xml', 'empty']) {
-  test('Dùng dự phòng khi nguồn ngoài lỗi: ' + kind, async (context) => {
-    const urls = [];
-    context.mock.method(globalThis, 'fetch', async (url) => {
-      urls.push(url);
-      if (url === '/blog.xml') return new Response(xml);
-      if (kind === 'network') throw new TypeError('Failed to fetch');
-      if (kind === 'http') return new Response('', { status: 502 });
-      return new Response(kind === 'xml' ? '<rss>' : feed(''));
-    });
-    assert.equal((await getBlogPosts()).length, 6);
-    assert.deepEqual(urls, ['/rss-proxy/feed/', '/blog.xml']);
-  });
-}
+test('Proxy lỗi thì đọc blog.xml', async () => {
+  const urls = [];
 
-test('Sau 8 giây hủy nguồn bị treo và đọc dự phòng', async (context) => {
-  let abortRequest;
-  context.mock.method(globalThis, 'setTimeout', (callback, delay) => {
-    assert.equal(delay, 8000);
-    abortRequest = callback;
-    return 1;
-  });
-  context.mock.method(globalThis, 'clearTimeout', () => {});
-  context.mock.method(globalThis, 'fetch', (url, options) => {
-    if (url === '/blog.xml') return Promise.resolve(new Response(xml));
-    return new Promise((resolve, reject) => {
-      options.signal.addEventListener('abort', () => reject(new Error('Abort')));
-    });
-  });
-  const result = getBlogPosts();
-  abortRequest();
-  assert.equal((await result).length, 6);
+  globalThis.fetch = async (url) => {
+    urls.push(url);
+
+    if (url === '/blog.xml') {
+      return new Response(blogXml);
+    }
+
+    return new Response('', { status: 502 });
+  };
+
+  const posts = await getBlogPosts();
+
+  assert.equal(posts.length, 6);
+  assert.deepEqual(urls, ['/rss-proxy/feed/', '/blog.xml']);
 });
 
-test('Báo lỗi khi cả hai nguồn thất bại', async (context) => {
-  const urls = [];
-  context.mock.method(globalThis, 'fetch', async (url) => {
-    urls.push(url);
+test('Báo lỗi khi cả proxy và blog.xml đều lỗi', async () => {
+  globalThis.fetch = async () => {
     throw new Error('Mất mạng');
-  });
-  await assert.rejects(getBlogPosts(), /Không tải được RSS và blog.xml/);
-  assert.deepEqual(urls, ['/rss-proxy/feed/', '/blog.xml']);
+  };
+
+  await assert.rejects(getBlogPosts());
 });

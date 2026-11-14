@@ -3,9 +3,10 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
+
   server: {
     proxy: {
-      // Vite lấy RSS từ Sneaker News thay cho trình duyệt
+      // Vite chuyển yêu cầu đến Sneaker News 
       '/rss-proxy': {
         target: 'https://sneakernews.com',
         changeOrigin: true,
