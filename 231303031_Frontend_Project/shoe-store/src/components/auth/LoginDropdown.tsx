@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 import LoginForm from './LoginForm';
-import '../styles/login.css';
+import '../../styles/login.css';
 
 export default function LoginDropdown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -71,3 +71,4 @@ export default function LoginDropdown() {
     </div>
   );
 }
+

@@ -23,6 +23,7 @@ export interface AuthContextType {
   user: User | null;
   login: (username: string, password: string) => { success: boolean; message?: string };
   register: (data: RegisterData) => { success: boolean; message?: string };
+  resetPass: (email: string, newPassword: string) => { success: boolean; message?: string };
   logout: () => void;
 }
 
@@ -136,13 +137,26 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return { success: true };
   };
 
+  const resetPass = (email: string, newPassword: string) => {
+    const users = getUsers();
+    const index = users.findIndex((u) => u.email.toLowerCase() === email.toLowerCase());
+
+    if (index === -1) {
+      return { success: false, message: 'Email không tồn tại' };
+    }
+
+    users[index].password = newPassword;
+    localStorage.setItem('users', JSON.stringify(users));
+    return { success: true };
+  };
+
   const logout = () => {
     setUser(null);
     localStorage.removeItem('user');
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, register, logout }}>
+    <AuthContext.Provider value={{ user, login, register, resetPass, logout }}>
       {children}
     </AuthContext.Provider>
   );

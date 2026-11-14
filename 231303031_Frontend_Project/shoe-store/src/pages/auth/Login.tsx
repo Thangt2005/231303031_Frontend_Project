@@ -1,7 +1,7 @@
 import { Link } from 'react-router';
-import LoginForm from '../components/LoginForm';
-import { useAuth } from '../context/AuthContext';
-import '../styles/login.css';
+import LoginForm from '../../components/auth/LoginForm';
+import { useAuth } from '../../context/AuthContext';
+import '../../styles/login.css';
 
 export default function Login() {
   const { user, logout } = useAuth();

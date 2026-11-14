@@ -1,5 +1,5 @@
-import RegisterForm from '../components/RegisterForm';
-import '../styles/login.css';
+import RegisterForm from '../../components/auth/RegisterForm';
+import '../../styles/login.css';
 
 export default function Register() {
   return (
@@ -8,3 +8,4 @@ export default function Register() {
     </div>
   );
 }
+

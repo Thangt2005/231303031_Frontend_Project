@@ -1,11 +1,11 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router';
-import { useAuth } from '../context/AuthContext';
-import '../styles/login.css';
+import { useAuth } from '../../context/AuthContext';
+import '../../styles/login.css';
 
-  interface LoginFormProps {
-    onSuccess?: () => void;
-  }
+interface LoginFormProps {
+  onSuccess?: () => void;
+}
 
 export default function LoginForm({ onSuccess }: LoginFormProps) {
   const { login } = useAuth();
@@ -95,7 +95,7 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
             />
             Ghi nhớ
           </label>
-          <Link to="/login" className="login-forgot-link">Quên mật khẩu?</Link>
+          <Link to="/forgot-password" className="login-forgot-link">Quên mật khẩu?</Link>
         </div>
 
         <button type="submit" className="login-submit-btn">

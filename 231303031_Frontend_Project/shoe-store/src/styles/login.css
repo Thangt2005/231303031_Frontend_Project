@@ -264,3 +264,12 @@
 .login-page-wrapper.register-wrapper {
   max-width: 460px;
 }
+
+.forgot-password-hint {
+  font-size: 10px;
+  color: var(--color-gray-dark);
+}
+
+.forgot-password-hint strong {
+  color: var(--color-black);
+}

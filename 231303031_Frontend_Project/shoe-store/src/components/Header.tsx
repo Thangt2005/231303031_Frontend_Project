@@ -3,7 +3,7 @@ import type { FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
-import LoginDropdown from './LoginDropdown';
+import LoginDropdown from './auth/LoginDropdown';
 import '../styles/header.css';
 
 type HeaderProps = {
