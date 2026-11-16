@@ -4,9 +4,14 @@ import { useCart } from '../context/CartContext';
 import '../styles/cart.css';
 
 export default function Cart() {
-  const { cart, updateQuantity, removeFromCart, totalPrice } = useCart();
+  const { cart, updateQuantity, removeFromCart } = useCart();
   const [promoCode, setPromoCode] = useState('');
   const [showPromoInput, setShowPromoInput] = useState(false);
+
+  const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
+  const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  const discount = 0;
+  const finalTotal = totalPrice - discount;
 
   return (
     <div className="cart-page">
@@ -45,13 +50,19 @@ export default function Cart() {
                 <tr>
                   <th style={{ width: '45%' }}>Mô tả sản phẩm</th>
                   <th className="text-center" style={{ width: '20%' }}>Số lượng</th>
-                  <th className="text-right" style={{ width: '25%' }}>Thành tiền</th>
+                  <th className="text-center" style={{ width: '25%' }}>Thành tiền</th>
                   <th className="text-center" style={{ width: '10%' }}>Xoá</th>
                 </tr>
               </thead>
               <tbody>
                 {cart.map((item) => {
                   const itemTotal = item.price * item.quantity;
+                  const itemSizes = Array.isArray(item.sizes) && item.sizes.length > 0
+                    ? item.sizes
+                    : [38, 39, 40, 41, 42, 43, 44, 45];
+                  const itemColor = (Array.isArray(item.colors) && item.colors[0]) || 'Đen';
+                  const defVariant = `${itemSizes[0]} / ${itemColor}`;
+
                   return (
                     <tr key={item.id}>
                       <td>
@@ -65,13 +76,12 @@ export default function Cart() {
                             <Link to={`/products/${item.id}`} className="cart-item-name">
                               {item.name}
                             </Link>
-                            <select className="cart-item-select" defaultValue="42 / Đen">
-                              <option value="39 / Đen">39 / Đen</option>
-                              <option value="40 / Đen">40 / Đen</option>
-                              <option value="41 / Đen">41 / Đen</option>
-                              <option value="42 / Đen">42 / Đen</option>
-                              <option value="43 / Đen">43 / Đen</option>
-                              <option value="44 / Đen">44 / Đen</option>
+                            <select className="cart-item-select" defValue={defVariant}>
+                              {itemSizes.map((size: number | string) => (
+                                <option key={size} value={`${size} / ${itemColor}`}>
+                                  {size} / {itemColor}
+                                </option>
+                              ))}
                             </select>
                             <span className="cart-item-price-unit">
                               {item.price.toLocaleString('vi-VN')}đ
@@ -100,7 +110,7 @@ export default function Cart() {
                         </div>
                       </td>
 
-                      <td className="cart-item-total">
+                      <td className="cart-item-total text-center">
                         {itemTotal.toLocaleString('vi-VN')}đ
                       </td>
 
@@ -177,7 +187,7 @@ export default function Cart() {
                   <small className="cart-summary-total-sub">(Đã bao gồm VAT)</small>
                 </div>
                 <span className="cart-summary-total-val">
-                  {totalPrice.toLocaleString('vi-VN')}đ
+                  {finalTotal.toLocaleString('vi-VN')}đ
                 </span>
               </div>
 
