@@ -1,8 +1,10 @@
+// Proxy được cấu hình trong vite.config.js
+const RSS_URL = '/rss-proxy/feed/';
 
-const CONTENT_NS = 'http://purl.org/rss/1.0/modules/content/';
-const DC_NS = 'http://purl.org/dc/elements/1.1/';
+// File dự phòng đặt trong thư mục public
+const BACKUP_URL = '/blog.xml';
 
-// Lấy nội dung của thẻ 
+// Lấy nội dung của thẻ con
 function getText(parent, tagName) {
   const element = parent.getElementsByTagName(tagName)[0];
 
@@ -13,39 +15,23 @@ function getText(parent, tagName) {
   return '';
 }
 
-// Lấy nội dung của thẻ có namespace
-function getTextNS(parent, namespace, tagName) {
-  const element = parent.getElementsByTagNameNS(namespace, tagName)[0];
-
-  if (element) {
-    return element.textContent.trim();
-  }
-
-  return '';
-}
-
-// Chuyển tiêu đề thành slug
-export function slugify(text) {
-  return String(text)
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/đ/g, 'd')
-    .replace(/Đ/g, 'D')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
-
-// Tạo slug 
-function makeSlug(guid, title, index) {
-  if (/^[a-z0-9]+(-[a-z0-9]+)*$/.test(guid)) {
+// Tạo slug cho đường dẫn bài viết
+function makeSlug(guid, link, index) {
+  // guid là chuỗi ngắn (như trong blog.xml) thì dùng luôn
+  if (guid !== '' && !guid.includes('/') && !guid.includes(' ')) {
     return guid;
   }
 
-  const slug = slugify(title);
+  // Lấy phần cuối của link: https://abc.com/ten-bai-viet/ -> ten-bai-viet
+  const parts = link.split('/');
+  let lastPart = parts[parts.length - 1];
 
-  if (slug) {
-    return slug;
+  if (lastPart === '') {
+    lastPart = parts[parts.length - 2];
+  }
+
+  if (lastPart && !lastPart.includes('.') && !lastPart.includes('?')) {
+    return lastPart;
   }
 
   return 'bai-viet-' + (index + 1);
@@ -53,124 +39,67 @@ function makeSlug(guid, title, index) {
 
 // Chuyển XML thành danh sách blog
 export function parseRssXml(xmlText) {
-  const parser = new DOMParser();
-  const xml = parser.parseFromString(xmlText, 'application/xml');
+  const xml = new DOMParser().parseFromString(xmlText, 'text/xml');
 
-  // Kiểm Tra lỗi XML
-  if (xml.getElementsByTagName('parsererror').length > 0) {
+  if (xml.querySelector('parsererror')) {
     throw new Error('File XML không hợp lệ');
   }
 
-  const root = xml.documentElement;
-
-  if (!root || root.nodeName !== 'rss') {
-    throw new Error('Dữ liệu không phải RSS');
-  }
-
-  if (root.getAttribute('version') !== '2.0') {
-    throw new Error('Chỉ hỗ trợ RSS 2.0');
-  }
-
-  const channel = root.getElementsByTagName('channel')[0];
-
-  if (!channel) {
-    throw new Error('RSS thiếu thẻ channel');
-  }
-
-  const items = channel.getElementsByTagName('item');
+  const items = xml.getElementsByTagName('item');
   const blogList = [];
-  const usedSlugs = [];
 
   for (let i = 0; i < items.length; i++) {
     const item = items[i];
-
     const title = getText(item, 'title');
-    const guid = getText(item, 'guid');
+
+    // Bỏ qua bài không có tiêu đề
+    if (title === '') {
+      continue;
+    }
+
     const link = getText(item, 'link');
+    const slug = makeSlug(getText(item, 'guid'), link, i);
     const description = getText(item, 'description');
 
-    if (!title) {
-      throw new Error('Bài viết số ' + (i + 1) + ' thiếu tiêu đề');
-    }
-
-    const baseSlug = makeSlug(guid, title, i);
-    let slug = baseSlug;
-    let count = 2;
-
-    while (usedSlugs.includes(slug)) {
-      slug = baseSlug + '-' + count;
-      count++;
-    }
-
-    usedSlugs.push(slug);
-
-    const author =
-      getTextNS(item, DC_NS, 'creator') ||
-      getText(item, 'author') ||
-      'Shoe Store';
-
-    const category =
-      getText(item, 'category') || 'Chưa phân loại';
-
-    const pubDate = getText(item, 'pubDate');
-
-    const content =
-      getTextNS(item, CONTENT_NS, 'encoded') || description;
-
-    // Thêm bài viết vào danh sách
     blogList.push({
       id: slug,
       slug: slug,
       title: title,
       link: link,
-      author: author,
-      category: category,
-      pubDate: pubDate,
+      author: getText(item, 'dc:creator') || getText(item, 'author') || 'Shoe Store',
+      category: getText(item, 'category') || 'Chưa phân loại',
+      pubDate: getText(item, 'pubDate'),
       description: description,
-      content: content,
+      content: getText(item, 'content:encoded') || description,
     });
+  }
+
+  // RSS rỗng cũng chuyển sang dữ liệu dự phòng
+  if (blogList.length === 0) {
+    throw new Error('RSS không có bài viết nào');
   }
 
   return blogList;
 }
 
+// Tải RSS từ một đường dẫn
 async function loadRss(url) {
   const response = await fetch(url);
 
   if (!response.ok) {
-    throw new Error(
-      'Không tải được RSS. HTTP ' + response.status
-    );
+    throw new Error('Không tải được RSS. HTTP ' + response.status);
   }
 
   const xmlText = await response.text();
-
   return parseRssXml(xmlText);
 }
 
-const baseUrl = import.meta.env?.BASE_URL || '/';
-
-const localBlogUrl =
-  baseUrl.replace(/\/?$/, '/') + 'blog.xml';
-
-const rssUrl =
-  import.meta.env?.VITE_RSS_URL || localBlogUrl;
-
-// Lấy danh sách bài viết từ RSS
-export async function getBlogPosts(url = rssUrl) {
+// Thử proxy trước, nếu lỗi thì dùng blog.xml
+export async function getBlogPosts() {
   try {
-    return await loadRss(url);
+    return await loadRss(RSS_URL);
   } catch (error) {
-    if (url === localBlogUrl) {
-      throw error;
-    }
-
-    try {
-      return await loadRss(localBlogUrl);
-    } catch (backupError) {
-      throw new Error(
-        'Không tải được RSS và file blog dự phòng'
-      );
-    }
+    console.log('Không lấy được RSS qua proxy, dùng blog.xml', error);
+    return await loadRss(BACKUP_URL);
   }
 }
