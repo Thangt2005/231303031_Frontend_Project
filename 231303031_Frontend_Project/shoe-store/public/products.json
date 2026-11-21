@@ -318,5 +318,53 @@
     "featured": false,
     "description": "Sandal quai dán dễ điều chỉnh, phù hợp đi chơi và du lịch.",
     "image": "https://cdn.hstatic.net/products/1000230642/hem001600xdg__7__6a003dde7ed74f54b57f1f7e1528232f.jpg"
+  },
+  {
+    "id": 21,
+    "name": "Giày Thể Thao Nam Biti's Hunter Matric 10 Màu Trắng HSM017500TRG",
+    "brand": "Local Brand",
+    "category": "Biti's",
+    "gender": "Male",
+    "price": 994000,
+    "originalPrice":995000,
+    "sizes": [36, 37, 38, 39, 40, 41, 42, 43],
+    "stock": 27,
+    "rating": 4.5,
+    "sold": 12,
+    "featured": false,
+    "description": "phù hợp đi chơi và du lịch.",
+    "image": "https://cdn.hstatic.net/products/1000230642/hsm017500trg__3__9e4865dd1c2641958e54a0f667e7be9e.jpg"
+  },
+  {
+    "id": 22,
+    "name": "Giày Thể Thao Bé Trai Biti's Helio Màu Xanh Dương BSB010801XDG",
+    "brand": "Local Brand",
+    "category": "Biti's",
+    "gender": "Male",
+    "price": 459000,
+    "originalPrice": 559000,
+    "sizes": [36, 37, 38, 39, 40, 41, 42, 43],
+    "stock": 27,
+    "rating": 4.5,
+    "sold": 1209,
+    "featured": false,
+    "description": "phù hợp đi chơi và du lịch.",
+    "image": "https://cdn.hstatic.net/products/1000230642/bsb010801xdg__1__2af80ffe2bb34d8498fd212b975eda24.jpg"
+  },
+  {
+    "id": 23,
+    "name": "Giày Bít Gosto Nữ Màu Kem GFW020688KEM",
+    "brand": "Local Brand",
+    "category": "Biti's",
+    "gender": "Female",
+    "price": 459000,
+    "originalPrice": 559000,
+    "sizes": [36, 37, 38, 39, 40, 41, 42, 43],
+    "stock": 27,
+    "rating": 4.5,
+    "sold": 1,
+    "featured": false,
+    "description": "Sandal quai dán dễ điều chỉnh, phù hợp đi chơi và du lịch.",
+    "image": "https://cdn.hstatic.net/products/1000230642/gfw020688kem__9__3400a11216334fd98f1aed85693abeb0.jpg"
   }
 ]

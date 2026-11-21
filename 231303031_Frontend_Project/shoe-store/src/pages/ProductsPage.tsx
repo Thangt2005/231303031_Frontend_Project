@@ -5,9 +5,13 @@ import ProductFilter, {
     getBrands,
 } from '../components/ProductFilter';
 import ProductList from '../components/ProductList';
+import ProductSkeleton from '../components/ProductSkeleton';
+import Pagination from '../components/Pagination';
 import { getProducts } from '../services/productService';
 import type { Product } from '../store/slice/ProductListSlice';
 import '../styles/products.css';
+
+const PAGE_SIZE = 8;
 
 // Bỏ dấu, bỏ phân biệt hoa/thường để "chay bo" vẫn khớp "Giày chạy bộ".
 function normalize(value: string) {
@@ -31,6 +35,7 @@ export default function ProductsPage() {
     const [brand, setBrand] = useState(brandParam);
     const [price, setPrice] = useState('');
     const [sort, setSort] = useState('');
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         let ignore = false;
@@ -64,6 +69,11 @@ export default function ProductsPage() {
         setBrand(brandParam);
     }, [brandParam]);
 
+    // Đổi tìm kiếm/lọc/sắp xếp thì quay về trang đầu.
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [keyword, brand, price, sort]);
+
     const brands = useMemo(() => getBrands(products), [products]);
 
     const searchedProducts = useMemo(() => {
@@ -80,6 +90,13 @@ export default function ProductsPage() {
         [searchedProducts, brand, price, sort]
     );
 
+    const totalPages = Math.max(1, Math.ceil(visibleProducts.length / PAGE_SIZE));
+    const safePage = Math.min(currentPage, totalPages);
+    const paginatedProducts = visibleProducts.slice(
+        (safePage - 1) * PAGE_SIZE,
+        safePage * PAGE_SIZE
+    );
+
     const handleReset = () => {
         setBrand('');
         setPrice('');
@@ -91,7 +108,12 @@ export default function ProductsPage() {
     };
 
     if (loading) {
-        return <p className="product-loading">Đang tải sản phẩm...</p>;
+        return (
+            <div className="container">
+                <h2 className="text-center mb-4">Danh sách sản phẩm</h2>
+                <ProductSkeleton count={PAGE_SIZE} />
+            </div>
+        );
     }
 
     if (error) {
@@ -140,7 +162,14 @@ export default function ProductsPage() {
                         <Link to="/products">Xem tất cả sản phẩm</Link>
                     </div>
                 ) : (
-                    <ProductList products={visibleProducts} />
+                    <>
+                        <ProductList products={paginatedProducts} />
+                        <Pagination
+                            currentPage={safePage}
+                            totalPages={totalPages}
+                            onPageChange={setCurrentPage}
+                        />
+                    </>
                 )}
             </div>
         </>
