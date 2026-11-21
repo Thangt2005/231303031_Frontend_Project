@@ -1,15 +1,16 @@
 /* Header */
 .header {
-    background-color: #ffffff;
-    color: #111111;
+    background-color: #fff;
+    color: #111;
     font-family: Arial, Helvetica, sans-serif;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid #eee;
 }
 
 .header-top {
     max-width: 1170px;
     margin: 0 auto;
     padding: 28px 15px 22px;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
 }
@@ -25,15 +26,16 @@
 }
 
 .header-hotline a {
-    color: #111111;
+    color: #111;
     text-decoration: none;
 }
 
 /* Logo */
 .header-logo {
+    min-width: 0;
     text-align: center;
     text-decoration: none;
-    color: #222222;
+    color: #222;
 }
 
 .logo-name {
@@ -51,9 +53,10 @@
     font-size: 11px;
     font-weight: bold;
     letter-spacing: 3px;
-    color: #999999;
+    color: #999;
 }
 
+/* Các nút bên phải */
 .header-actions {
     display: flex;
     justify-content: flex-end;
@@ -64,17 +67,17 @@
     margin-left: 28px;
     font-size: 14px;
     font-weight: bold;
-    color: #111111;
+    color: #111;
     text-decoration: none;
     display: flex;
     align-items: center;
 }
 
 .action-link:hover {
-    color: #888888;
+    color: #888;
 }
 
-/* Gio hang */
+/* Giỏ hàng */
 .cart-icon {
     position: relative;
     margin-left: 6px;
@@ -88,8 +91,8 @@
     width: 17px;
     height: 17px;
     border-radius: 50%;
-    background-color: #111111;
-    color: #ffffff;
+    background-color: #111;
+    color: #fff;
     font-size: 10px;
     text-align: center;
     line-height: 17px;
@@ -100,12 +103,13 @@
     padding: 0;
     border: none;
     background: none;
-    color: #111111;
+    color: #111;
     font-size: 22px;
     cursor: pointer;
     display: flex;
 }
 
+/* Nút ☰ chỉ hiện trên màn hình nhỏ */
 .menu-button {
     display: none;
 }
@@ -115,21 +119,23 @@
     max-width: 600px;
     margin: 0 auto 20px;
     padding: 0 15px;
+    box-sizing: border-box;
     display: flex;
 }
 
 .header-search input {
     flex: 1;
+    min-width: 0;
     padding: 10px 14px;
-    border: 1px solid #cccccc;
+    border: 1px solid #ccc;
     font-size: 14px;
 }
 
 .header-search button {
     padding: 10px 22px;
     border: none;
-    background-color: #111111;
-    color: #ffffff;
+    background-color: #111;
+    color: #fff;
     font-weight: bold;
     cursor: pointer;
 }
@@ -138,7 +144,8 @@
 .header-nav {
     max-width: 1170px;
     margin: 0 auto;
-    border-top: 1px solid #cccccc;
+    box-sizing: border-box;
+    border-top: 1px solid #ccc;
 }
 
 .nav-list {
@@ -162,12 +169,12 @@
     font-weight: bold;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #111111;
+    color: #111;
     text-decoration: none;
 }
 
 .nav-link:hover {
-    color: #888888;
+    color: #888;
 }
 
 .arrow-button {
@@ -175,11 +182,12 @@
     padding: 4px;
     border: none;
     background: none;
-    color: #111111;
+    color: #111;
     cursor: pointer;
     display: flex;
 }
 
+/* Menu con */
 .sub-menu {
     position: absolute;
     top: 100%;
@@ -189,8 +197,8 @@
     margin: 0;
     padding: 8px 0;
     list-style: none;
-    background-color: #ffffff;
-    border: 1px solid #eeeeee;
+    background-color: #fff;
+    border: 1px solid #eee;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
@@ -198,27 +206,28 @@
     display: block;
     padding: 9px 20px;
     font-size: 14px;
-    color: #333333;
+    color: #333;
     text-decoration: none;
 }
 
 .sub-link:hover {
     background-color: #f5f5f5;
-    color: #111111;
+    color: #111;
 }
 
+/* Mục chỉ hiện trên điện thoại */
 .show-mobile {
     display: none;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Máy tính bảng và điện thoại */
+@media (max-width: 992px) {
     .header-top {
-        padding: 16px 15px;
+        padding: 16px;
     }
 
     .header-hotline,
-    .hide-mobile {
+    .header .hide-mobile {
         display: none;
     }
 
@@ -227,7 +236,7 @@
     }
 
     .logo-name {
-        font-size: 26px;
+        font-size: 28px;
     }
 
     .logo-slogan {
@@ -235,16 +244,25 @@
         letter-spacing: 2px;
     }
 
-    .action-link,
-    .icon-button {
-        margin-left: 20px;
+    .header-actions {
+        margin-left: 16px;
     }
 
-    .menu-button {
+    /* Nút to hơn cho dễ bấm trên điện thoại */
+    .header .action-link,
+    .header .icon-button {
+        margin-left: 12px;
+        min-width: 36px;
+        min-height: 40px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header .menu-button {
         display: flex;
     }
 
-    /* Menu mobile */
+    /* Menu ẩn, bấm nút ☰ thì thêm class show để hiện */
     .header-nav {
         display: none;
     }
@@ -254,13 +272,13 @@
     }
 
     .nav-list {
-        flex-direction: column;
-        padding: 0 15px 10px;
+        display: block;
+        padding: 0 16px 12px;
     }
 
     .nav-item {
         flex-wrap: wrap;
-        border-bottom: 1px solid #eeeeee;
+        border-bottom: 1px solid #eee;
     }
 
     .nav-link {
@@ -268,15 +286,61 @@
         padding: 14px 0;
     }
 
+    .arrow-button {
+        width: 44px;
+        height: 44px;
+        margin-left: 0;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Menu con nằm ngay dưới mục cha */
     .sub-menu {
         position: static;
         width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 0 0 8px 12px;
         border: none;
         box-shadow: none;
-        padding: 0 0 8px 15px;
     }
 
-    .show-mobile {
+    .sub-link {
+        padding: 12px;
+        word-wrap: break-word;
+    }
+
+    .header .show-mobile {
         display: flex;
+    }
+}
+
+/* Điện thoại */
+@media (max-width: 576px) {
+    .header-top {
+        padding: 14px 12px;
+    }
+
+    .logo-name {
+        font-size: 22px;
+        letter-spacing: 1px;
+    }
+
+    .logo-slogan {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
+    .header-actions {
+        margin-left: 8px;
+    }
+
+    .header .action-link,
+    .header .icon-button {
+        margin-left: 4px;
+    }
+
+    .header-search button {
+        padding: 10px 14px;
     }
 }

@@ -1,29 +1,35 @@
 .home-page {
   color: #222;
 }
+
+/* Banner đầu trang */
 .home-banner {
   padding: 56px 40px;
   background-color: #fff;
   border: 1px solid #e5e5e5;
 }
+
 .home-label {
   margin: 0 0 12px;
   font-size: 13px;
   font-weight: bold;
   letter-spacing: 2px;
 }
+
 .home-banner h1 {
   max-width: 720px;
   margin: 0 0 20px;
   font-size: 40px;
   line-height: 1.3;
 }
+
 .home-description {
   max-width: 600px;
   margin: 0 0 28px;
   color: #555;
   line-height: 1.8;
 }
+
 .home-button {
   display: inline-block;
   padding: 12px 22px;
@@ -33,45 +39,45 @@
   text-decoration: none;
   white-space: nowrap;
 }
+
 .home-button:hover {
   background-color: #444;
 }
-/* Sản phẩm nổi bật */
+
+/* Phần sản phẩm nổi bật */
 .home-section {
   margin-top: 40px;
 }
+
 .home-section-heading {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
 }
+
 .home-section-heading h2 {
   margin: 0 0 8px;
   font-size: 26px;
 }
+
 .home-section-heading p {
   margin: 0;
   color: #666;
 }
+
 .home-link {
   margin-left: 20px;
   color: #222;
   text-decoration: none;
   white-space: nowrap;
 }
+
 .home-link:hover {
   text-decoration: underline;
 }
-.home-products {
-  grid-template-columns: repeat(4, 1fr);
-}
-.home-products > div {
-  width: 100%;
-  min-width: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+
+/* Phần giới thiệu blog */
 .home-blog {
   display: flex;
   justify-content: space-between;
@@ -81,56 +87,62 @@
   background-color: #fff;
   border: 1px solid #e5e5e5;
 }
-.home-blog > div {
+
+.home-blog>div {
   max-width: 650px;
   margin-right: 32px;
 }
+
 .home-blog h2 {
   margin: 0 0 12px;
   font-size: 26px;
   line-height: 1.4;
 }
+
 .home-blog p:last-child {
   margin: 0;
   color: #555;
   line-height: 1.8;
 }
-/* Máy tính */
+
+/* Máy tính bảng */
 @media (max-width: 992px) {
   .home-banner h1 {
     font-size: 32px;
   }
-  .home-products {
-    grid-template-columns: repeat(2, 1fr);
-  }
+
   .home-blog {
     display: block;
   }
-  .home-blog > div {
+
+  .home-blog>div {
     margin: 0 0 32px;
   }
 }
+
 /* Điện thoại */
 @media (max-width: 576px) {
   .home-banner {
     padding: 32px 20px;
   }
+
   .home-banner h1 {
     font-size: 26px;
   }
+
   .home-section-heading {
     display: block;
   }
+
   .home-link {
     display: inline-block;
     margin: 12px 0 0;
   }
-  .home-products {
-    grid-template-columns: 1fr;
-  }
+
   .home-blog {
     padding: 24px 20px;
   }
+
   .home-section-heading h2,
   .home-blog h2 {
     font-size: 22px;
