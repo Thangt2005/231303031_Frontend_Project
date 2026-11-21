@@ -42,6 +42,43 @@
 .product-error { color: #b3261e; }
 .product-loading { color: #555; }
 
+/* Thanh thông báo kết quả tìm kiếm theo tên. */
+.product-search-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 18px;
+  padding: 10px 14px;
+  border: 1px solid #d8e6e0;
+  border-radius: 8px;
+  background: #f2f8f5;
+  color: #315246;
+}
+
+.product-search-clear {
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: #17654e;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.product-search-clear:hover { text-decoration: underline; }
+
+.product-search-empty {
+  padding: 24px 0;
+  color: #555;
+}
+
+.product-search-empty a {
+  color: #17654e;
+  font-weight: 600;
+}
+
 .product-detail-status { padding: 24px 0; }
 
 .product-detail-actions {
