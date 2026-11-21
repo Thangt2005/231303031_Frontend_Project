@@ -72,6 +72,7 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
     }
   };
 
+  // Đóng menu sau khi bấm vào một link
   const closeAllMenu = () => {
     setOpenMenu('');
     setShowMobileMenu(false);
@@ -80,11 +81,14 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
   const handleSearch = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (keyword.trim() === '') {
+    const text = keyword.trim();
+
+    if (text === '') {
       return;
     }
 
-    navigate(`/products?search=${encodeURIComponent(keyword.trim())}`);
+    // Mã hoá từ khoá để ký tự như & hoặc # không làm hỏng đường dẫn
+    navigate('/products?search=' + encodeURIComponent(text));
     setKeyword('');
     setShowSearch(false);
   };
@@ -146,10 +150,11 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
             </svg>
           </button>
 
+          {/* Nút ☰ chỉ hiện trên điện thoại (xem header.css) */}
           <button
             type="button"
             className="icon-button menu-button"
-            aria-label="Mở menu"
+            aria-label="Menu"
             onClick={() => setShowMobileMenu(!showMobileMenu)}
           >
             {showMobileMenu ? '✕' : '☰'}
@@ -170,20 +175,12 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
         </form>
       )}
 
+      {/* Trên điện thoại, menu chỉ hiện khi có class show */}
       <nav className={showMobileMenu ? 'header-nav show' : 'header-nav'}>
         <ul className="nav-list">
           {menuList.map((menu) => (
-            <li
-              key={menu.title}
-              className="nav-item"
-              onMouseEnter={() => setOpenMenu(menu.title)}
-              onMouseLeave={() => setOpenMenu('')}
-            >
-              <Link
-                to={menu.path}
-                className="nav-link"
-                onClick={closeAllMenu}
-              >
+            <li key={menu.title} className="nav-item">
+              <Link to={menu.path} className="nav-link" onClick={closeAllMenu}>
                 {menu.title}
               </Link>
 
@@ -191,7 +188,7 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
                 <button
                   type="button"
                   className="arrow-button"
-                  aria-label={`Mở menu ${menu.title}`}
+                  aria-label="Mở menu con"
                   onClick={() => toggleSubMenu(menu.title)}
                 >
                   <svg
@@ -211,11 +208,7 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
                 <ul className="sub-menu">
                   {menu.children.map((child) => (
                     <li key={child.name}>
-                      <Link
-                        to={child.path}
-                        className="sub-link"
-                        onClick={closeAllMenu}
-                      >
+                      <Link to={child.path} className="sub-link" onClick={closeAllMenu}>
                         {child.name}
                       </Link>
                     </li>
@@ -225,6 +218,7 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
             </li>
           ))}
 
+          {/* Tài khoản nằm trong menu khi ở điện thoại */}
           <li className="nav-item show-mobile">
             {user ? (
               <button
