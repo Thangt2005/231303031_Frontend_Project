@@ -93,7 +93,7 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
     <header className="header">
       <div className="header-top">
         <div className="header-hotline">
-          HOTLINE: <a href="tel:88888888">8888 8888</a>
+          HOTLINE: <a href="tel:(028) 3896 6780 ">028 3896 6780 </a>
         </div>
 
         <Link to="/" className="header-logo" onClick={closeAllMenu}>

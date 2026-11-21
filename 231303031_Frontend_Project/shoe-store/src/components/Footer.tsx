@@ -30,7 +30,7 @@ export default function Footer() {
           <p>Giày cho phong cách của bạn.</p>
           <p>GIÀY CHÍNH HÃNG!</p>
           <p>
-            Hotline: <a href="tel:88888888">8888 8888</a>
+            Hotline: <a href="tel:(028) 3896 6780 ">028 3896 6780 </a>
           </p>
         </div>
 
