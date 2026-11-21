@@ -84,7 +84,7 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
       return;
     }
 
-    navigate(`/products?search=${keyword}`);
+    navigate(`/products?search=${encodeURIComponent(keyword.trim())}`);
     setKeyword('');
     setShowSearch(false);
   };

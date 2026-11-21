@@ -1,17 +1,16 @@
-import { useSelector } from "react-redux";
-import ProductItem from "./ProductItems";
-import "../styles/products.css";
+import type { Product } from '../store/slice/ProductListSlice';
+import ProductItem from './ProductItems';
+import '../styles/products.css';
 
-export default function ProductList() {
-    const products = useSelector((state: any) => state.products || []);
-
+// Nhận danh sách đã được lọc từ ProductsPage và chỉ render lưới sản phẩm.
+export default function ProductList({ products }: { products: Product[] }) {
     if (!Array.isArray(products) || products.length === 0) {
-        return <p className="product-loading">Đang tải sản phẩm...</p>;
+        return <p>Không có sản phẩm</p>;
     }
 
     return (
         <div className="product-list">
-            {products.map((product: any) => (
+            {products.map((product) => (
                 <ProductItem key={product.id} product={product} />
             ))}
         </div>

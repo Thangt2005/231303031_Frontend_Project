@@ -1,10 +1,2 @@
-import ProductList from '../components/ProductList';
-
-export default function Products() {
-  return (
-    <div>
-      <h1>Sản phẩm</h1>
-      <ProductList />
-    </div>
-  );
-}
+// Giữ file cũ để các import trực tiếp vẫn hoạt động.
+export { default } from './ProductsPage';

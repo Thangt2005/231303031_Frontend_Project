@@ -1,5 +1,5 @@
 export { default as Home } from './Home/Home';
-export { default as Products } from './Products';
+export { default as Products } from './ProductsPage';
 export { default as ProductDetail } from './ProductDetail';
 export { default as Cart } from './Cart.tsx';
 export { default as Blog } from './Blog/Blog';
