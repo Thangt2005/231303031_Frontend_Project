@@ -2,6 +2,7 @@ import { Outlet } from 'react-router';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
+import CompareBar from '../components/CompareBar';
 import { useCart } from '../context/CartContext';
 import '../styles/layout.css';
 
@@ -16,6 +17,8 @@ export function Layout() {
             <main id="store-main" className="store-container store-main" tabIndex={-1}>
                 <Outlet />
             </main>
+            {/* Băng so sánh dính ở cuối màn hình, nằm trên Footer */}
+            <CompareBar />
             <Footer />
         </div>
     );
