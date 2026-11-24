@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer, useEffect, ReactNode } from 'react';
 import { cartReducer } from './cartReducer';
+import { useAuth } from './AuthContext';
 
 export interface CartItem {
   id: number;
@@ -23,6 +24,7 @@ export interface CartContextType {
 const CartContext = createContext<CartContextType | null>(null);
 
 export function CartProvider({ children }: { children: ReactNode }) {
+  const { user, openLogin } = useAuth();
   const [cart, dispatch] = useReducer(cartReducer, [], () => {
     const saved = localStorage.getItem('cart');
     return saved ? JSON.parse(saved) : [];
@@ -33,6 +35,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, [cart]);
 
   const addToCart = (product: any, quantity = 1) => {
+    if (!user) {
+      openLogin('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng');
+      return;
+    }
     dispatch({ type: 'ADD_TO_CART', payload: { ...product, quantity } });
   };
 

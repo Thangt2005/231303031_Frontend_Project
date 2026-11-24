@@ -25,6 +25,10 @@ export interface AuthContextType {
   register: (data: RegisterData) => { success: boolean; message?: string };
   resetPass: (email: string, newPassword: string) => { success: boolean; message?: string };
   logout: () => void;
+  isLoginOpen: boolean;
+  openLogin: (message?: string) => void;
+  closeLogin: () => void;
+  loginMessage: string;
 }
 
 export const MOCK_USERS: User[] = [
@@ -153,10 +157,37 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const logout = () => {
     setUser(null);
     localStorage.removeItem('user');
+    setIsLoginOpen(false);
+    setLoginMessage('');
+  };
+
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [loginMessage, setLoginMessage] = useState('');
+
+  const openLogin = (message = '') => {
+    setLoginMessage(message);
+    setIsLoginOpen(true);
+  };
+
+  const closeLogin = () => {
+    setIsLoginOpen(false);
+    setLoginMessage('');
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, register, resetPass, logout }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        login,
+        register,
+        resetPass,
+        logout,
+        isLoginOpen,
+        openLogin,
+        closeLogin,
+        loginMessage,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

@@ -228,6 +228,7 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
                 onClick={() => {
                   logout();
                   closeAllMenu();
+                  navigate('/', { replace: true, state: {} });
                 }}
               >
                 Đăng xuất ({user.username})

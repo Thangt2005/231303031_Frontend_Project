@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router';
 import { getProducts } from '../services/productService';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 import '../styles/products.css';
 
 function formatPrice(value: number) {
@@ -11,6 +12,7 @@ function formatPrice(value: number) {
 export default function ProductDetail() {
   const { id } = useParams();
   const { addToCart } = useCart();
+  const { user, openLogin } = useAuth();
 
   const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -62,6 +64,10 @@ export default function ProductDetail() {
 
   const handleAddToCart = () => {
     if (!product || Number(product.stock) <= 0) return;
+    if (!user) {
+      openLogin('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng');
+      return;
+    }
     addToCart(product, quantity);
     setNotice(`Đã thêm ${quantity} sản phẩm vào giỏ hàng.`);
   };
