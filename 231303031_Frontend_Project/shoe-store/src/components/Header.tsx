@@ -52,6 +52,7 @@ const menuList: Menu[] = [
     ],
   },
   { title: 'Blog', path: '/blog' },
+  { title: 'Mã giảm giá', path: '/vouchers' },
 ];
 
 export default function Header({ cartCount = 0 }: HeaderProps) {
