@@ -12,6 +12,7 @@ interface Props {
   onPick?: (v: Voucher) => void;
   pickLabel?: string;
   showFilter?: boolean;
+  compact?: boolean;
 }
 
 type Tab = 'all' | 'active' | 'saved';
@@ -25,6 +26,7 @@ export default function VoucherList({
   onPick,
   pickLabel,
   showFilter = true,
+  compact = false,
 }: Props) {
   const [q, setQ] = useState('');
   const [tab, setTab] = useState<Tab>('all');
@@ -82,7 +84,7 @@ export default function VoucherList({
       {items.length === 0 ? (
         <p className="vc-empty">Không tìm thấy mã giảm giá phù hợp.</p>
       ) : (
-        <div className="vc-grid">
+        <div className={`vc-grid ${compact ? 'vc-compact' : ''}`}>
           {items.map((v) => (
             <VoucherCard
               key={v.id}

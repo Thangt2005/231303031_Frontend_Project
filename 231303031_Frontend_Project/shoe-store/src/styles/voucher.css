@@ -86,6 +86,25 @@
   gap: 16px;
 }
 
+.vc-grid.vc-compact {
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.vc-compact .vc-left {
+  width: 92px;
+  padding: 10px 6px;
+}
+
+.vc-compact .vc-val {
+  font-size: 16px;
+}
+
+.vc-compact .vc-body {
+  padding: 10px 12px;
+  gap: 6px;
+}
+
 .vc-card {
   display: flex;
   border: 1px solid var(--vc-border);

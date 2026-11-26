@@ -1,17 +1,60 @@
 import { useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import VoucherList from '../components/VoucherList';
 import { useCart } from '../context/CartContext';
+import { useVouchers } from '../hooks/useVouchers';
 import '../styles/cart.css';
+import '../styles/voucher.css';
 
 export default function Cart() {
-  const { cart, updateQuantity, removeFromCart } = useCart();
-  const [promoCode, setPromoCode] = useState('');
-  const [showPromoInput, setShowPromoInput] = useState(false);
+  const {
+    cart,
+    totalItems,
+    totalPrice,
+    voucher,
+    off,
+    finalPrice,
+    updateQuantity,
+    removeFromCart,
+    clearCart,
+    applyVoucher,
+    dropVoucher,
+  } = useCart();
+  const navigate = useNavigate();
+  const { list, saved } = useVouchers();
+  const [code, setCode] = useState('');
+  const [pickOpen, setPickOpen] = useState(false);
+  const [msg, setMsg] = useState('');
+  const [ok, setOk] = useState(false);
 
-  const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
-  const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  const discount = 0;
-  const finalTotal = totalPrice - discount;
+  const onApply = (val = code) => {
+    const res = applyVoucher(val);
+    setMsg(res.msg);
+    setOk(res.ok);
+    if (res.ok) {
+      setCode(res.voucher?.code || val);
+      setPickOpen(false);
+    }
+  };
+
+  const onDrop = () => {
+    dropVoucher();
+    setCode('');
+    setMsg('');
+    setOk(false);
+  };
+
+  const onPay = () => {
+    const bill = {
+      count: totalItems,
+      total: totalPrice,
+      code: voucher?.code || '',
+      off,
+      final: finalPrice,
+    };
+    clearCart();
+    navigate('/checkout', { state: bill });
+  };
 
   return (
     <div className="cart-page">
@@ -133,32 +176,66 @@ export default function Cart() {
 
           <aside className="cart-sidebar">
             <div className="cart-promo-box">
-              <div
-                className="cart-promo-header"
-                onClick={() => setShowPromoInput(!showPromoInput)}
-              >
+              <div className="cart-promo-header">
                 <span>NHẬP KHUYẾN MÃI</span>
-                <span>{showPromoInput ? '▼' : '›'}</span>
               </div>
-              {showPromoInput && (
-                <div className="cart-promo-body">
+              <div className="cart-promo-body">
                   <div className="cart-promo-input-group">
                     <input
                       type="text"
                       className="cart-promo-input"
                       placeholder="Nhập mã khuyến mãi"
-                      value={promoCode}
-                      onChange={(e) => setPromoCode(e.target.value)}
+                      value={code}
+                      onChange={(e) => setCode(e.target.value)}
                     />
                     <button
                       type="button"
                       className="cart-promo-btn"
+                      onClick={() => onApply()}
                     >
                       Áp dụng
                     </button>
                   </div>
-                </div>
-              )}
+
+                  {msg && (
+                    <p className={`cart-promo-msg ${ok ? 'ok' : ''}`}>{msg}</p>
+                  )}
+
+                  {voucher && (
+                    <div className="cart-promo-tag">
+                      <span>
+                        Đang áp: <strong>{voucher.code}</strong> (-{off.toLocaleString('vi-VN')}đ)
+                      </span>
+                      <button
+                        type="button"
+                        className="cart-promo-drop"
+                        onClick={onDrop}
+                      >
+                        Gỡ
+                      </button>
+                    </div>
+                  )}
+
+                  <button
+                    type="button"
+                    className="cart-promo-pick-btn"
+                    onClick={() => setPickOpen(!pickOpen)}
+                  >
+                    {pickOpen ? 'Ẩn danh sách mã' : 'Chọn mã có sẵn'}
+                  </button>
+
+                  {pickOpen && (
+                    <div className="cart-promo-list">
+                      <VoucherList
+                        list={list}
+                        saved={saved}
+                        onPick={(v) => onApply(v.code)}
+                        showFilter={false}
+                        compact
+                      />
+                    </div>
+                  )}
+              </div>
             </div>
 
             <div className="cart-summary-card">
@@ -171,7 +248,7 @@ export default function Cart() {
 
               <div className="cart-summary-row">
                 <span>Khuyến mãi</span>
-                <span>-</span>
+                <span>{off > 0 ? `-${off.toLocaleString('vi-VN')}đ` : '-'}</span>
               </div>
 
               <div className="cart-summary-row">
@@ -187,13 +264,18 @@ export default function Cart() {
                   <small className="cart-summary-total-sub">(Đã bao gồm VAT)</small>
                 </div>
                 <span className="cart-summary-total-val">
-                  {finalTotal.toLocaleString('vi-VN')}đ
+                  {finalPrice.toLocaleString('vi-VN')}đ
                 </span>
               </div>
 
-              <Link to="/checkout" className="cart-checkout-btn">
+              <button
+                type="button"
+                className="cart-checkout-btn"
+                style={{ border: 'none', cursor: 'pointer' }}
+                onClick={onPay}
+              >
                 THANH TOÁN
-              </Link>
+              </button>
             </div>
           </aside>
         </div>
