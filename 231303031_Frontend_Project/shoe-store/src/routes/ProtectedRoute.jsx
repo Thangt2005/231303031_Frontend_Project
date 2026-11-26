@@ -5,10 +5,11 @@ export default function ProtectedRoute() {
   const { user } = useAuth();
   const location = useLocation();
 
+  // Chưa đăng nhập: chuyển sang trang đăng nhập
   if (!user) {
     return (
       <Navigate
-        to="/"
+        to="/login"
         replace
         state={{
           from: location.pathname,
@@ -20,4 +21,3 @@ export default function ProtectedRoute() {
 
   return <Outlet />;
 }
-

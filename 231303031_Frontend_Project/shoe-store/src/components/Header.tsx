@@ -217,7 +217,14 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
               )}
             </li>
           ))}
-
+          {/* Đã đăng nhập thì có thêm link tới trang tài khoản */}
+          {user && (
+            <li className="nav-item show-mobile">
+              <Link to="/account" className="nav-link" onClick={closeAllMenu}>
+                Tài khoản của tôi
+              </Link>
+            </li>
+          )}
           {/* Tài khoản nằm trong menu khi ở điện thoại */}
           <li className="nav-item show-mobile">
             {user ? (
