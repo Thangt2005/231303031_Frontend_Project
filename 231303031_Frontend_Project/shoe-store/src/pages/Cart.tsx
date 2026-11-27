@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link } from 'react-router';
 import VoucherList from '../components/VoucherList';
 import { useCart } from '../context/CartContext';
 import { useVouchers } from '../hooks/useVouchers';
@@ -9,18 +9,15 @@ import '../styles/voucher.css';
 export default function Cart() {
   const {
     cart,
-    totalItems,
     totalPrice,
     voucher,
     off,
     finalPrice,
     updateQuantity,
     removeFromCart,
-    clearCart,
     applyVoucher,
     dropVoucher,
   } = useCart();
-  const navigate = useNavigate();
   const { list, saved } = useVouchers();
   const [code, setCode] = useState('');
   const [pickOpen, setPickOpen] = useState(false);
@@ -42,18 +39,6 @@ export default function Cart() {
     setCode('');
     setMsg('');
     setOk(false);
-  };
-
-  const onPay = () => {
-    const bill = {
-      count: totalItems,
-      total: totalPrice,
-      code: voucher?.code || '',
-      off,
-      final: finalPrice,
-    };
-    clearCart();
-    navigate('/checkout', { state: bill });
   };
 
   return (
@@ -119,7 +104,7 @@ export default function Cart() {
                             <Link to={`/products/${item.id}`} className="cart-item-name">
                               {item.name}
                             </Link>
-                            <select className="cart-item-select" defValue={defVariant}>
+                            <select className="cart-item-select" defaultValue={defVariant}>
                               {itemSizes.map((size: number | string) => (
                                 <option key={size} value={`${size} / ${itemColor}`}>
                                   {size} / {itemColor}
@@ -268,14 +253,9 @@ export default function Cart() {
                 </span>
               </div>
 
-              <button
-                type="button"
-                className="cart-checkout-btn"
-                style={{ border: 'none', cursor: 'pointer' }}
-                onClick={onPay}
-              >
+              <Link to="/checkout" className="cart-checkout-btn">
                 THANH TOÁN
-              </button>
+              </Link>
             </div>
           </aside>
         </div>
