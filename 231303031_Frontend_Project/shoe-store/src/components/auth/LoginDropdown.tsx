@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useLocation, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { useAuth } from '../../context/AuthContext';
 import LoginForm from './LoginForm';
 import '../../styles/login.css';
@@ -69,6 +69,13 @@ export default function LoginDropdown() {
           {user ? (
             <div className="login-user-menu">
               <p className="login-user-name">Xin chào, {user.username}</p>
+              <Link
+                to="/orders"
+                className="login-menu-link"
+                onClick={closeLogin}
+              >
+                Đơn hàng
+              </Link>
               <button
                 type="button"
                 className="login-logout-btn"

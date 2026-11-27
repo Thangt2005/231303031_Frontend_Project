@@ -207,6 +207,24 @@
   border-color: var(--color-black);
 }
 
+.login-menu-link {
+  display: block;
+  padding: 10px;
+  border: 1px solid var(--color-black);
+  border-radius: 6px;
+  background: var(--color-black);
+  color: var(--color-white);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.2s;
+}
+
+.login-menu-link:hover {
+  background: var(--color-gray-hover);
+}
+
 .login-success-message {
   padding: 8px 12px;
   background: var(--color-gray-light);
