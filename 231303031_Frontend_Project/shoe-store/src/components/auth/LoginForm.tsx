@@ -5,9 +5,10 @@ import '../../styles/login.css';
 
 interface LoginFormProps {
   onSuccess?: () => void;
+  message?: string;
 }
 
-export default function LoginForm({ onSuccess }: LoginFormProps) {
+export default function LoginForm({ onSuccess, message }: LoginFormProps) {
   const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -16,13 +17,15 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
     password: '',
     remember: false,
   });
-  const [error, setError] = useState(location.state?.message || '');
+  const [error, setError] = useState(message || location.state?.message || '');
 
   useEffect(() => {
-    if (location.state?.message) {
+    if (message) {
+      setError(message);
+    } else if (location.state?.message) {
       setError(location.state.message);
     }
-  }, [location.state]);
+  }, [message, location.state]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
@@ -30,9 +33,6 @@ export default function LoginForm({ onSuccess }: LoginFormProps) {
       ...prev,
       [name]: type === 'checkbox' ? checked : value,
     }));
-    if (error) {
-      setError('');
-    }
   };
 
   const handleSubmit = (e: FormEvent) => {

@@ -11,6 +11,7 @@ import {
   NotFound,
   Checkout,
   Orders,
+  Vouchers,
   Compare,
   Wishlist,
 } from '../pages';
@@ -400,6 +401,7 @@ export const router = createBrowserRouter([
       { path: 'products/:id', element: <ProductDetail />, loader: dataLoader },
       { path: 'cart', element: <Cart /> },
       { path: 'blog', element: <Blog /> },
+      { path: 'vouchers', element: <Vouchers /> },
       { path: 'compare', element: <Compare /> },
       { path: 'wishlist', element: <Wishlist /> },
       { path: 'login', element: <Login /> },

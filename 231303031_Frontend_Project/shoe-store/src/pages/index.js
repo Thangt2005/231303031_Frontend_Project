@@ -10,5 +10,6 @@ export { default as NotFound } from './NotFound';
 export { default as Checkout } from './Checkout.tsx';
 export {Account} from './Account.tsx'
 export { default as Orders } from './Orders.tsx';
+export { default as Vouchers } from './Vouchers.tsx';
 export { default as Compare } from './Compare';
 export { default as Wishlist } from './Wishlist';

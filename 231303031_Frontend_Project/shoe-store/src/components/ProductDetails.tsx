@@ -3,6 +3,7 @@ import type { CSSProperties } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 import type { Product } from '../store/slice/ProductListSlice';
 import '../styles/product-detail.css';
 
@@ -175,6 +176,7 @@ export function ProductDetail() {
     const { id } = useParams<{ id: string }>();
     const navigate = useNavigate();
     const { addToCart } = useCart();
+    const { user, openLogin } = useAuth();
 
     const products = useSelector(
         (state: { products: Product[] }) => state.products || []
@@ -248,6 +250,10 @@ export function ProductDetail() {
         if (!isAvailable) {
             return;
         }
+        if (!user) {
+            openLogin('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng');
+            return;
+        }
 
         addToCart(product, quantity);
         setActionMessage(
@@ -257,6 +263,10 @@ export function ProductDetail() {
 
     const handleBuyNow = () => {
         if (!isAvailable) {
+            return;
+        }
+        if (!user) {
+            openLogin('Vui lòng đăng nhập để mua hàng');
             return;
         }
 

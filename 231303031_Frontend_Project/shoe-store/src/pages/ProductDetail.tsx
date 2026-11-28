@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router';
 import { getProducts } from '../services/productService';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 import type { RootState, AppDispatch } from '../store/store';
 import { addWishlist, removeWishlist } from '../store/slice/WishlistSlice';
 import '../styles/products.css';
@@ -15,6 +16,7 @@ function formatPrice(value: number) {
 export default function ProductDetail() {
   const { id } = useParams();
   const { addToCart } = useCart();
+  const { user, openLogin } = useAuth();
   const dispatch = useDispatch<AppDispatch>();
   const wishlistItems = useSelector((state: RootState) => state.wishlist.items);
 
@@ -70,6 +72,10 @@ export default function ProductDetail() {
 
   const handleAddToCart = () => {
     if (!product || Number(product.stock) <= 0) return;
+    if (!user) {
+      openLogin('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng');
+      return;
+    }
     addToCart(product, quantity);
     setNotice(`Đã thêm ${quantity} sản phẩm vào giỏ hàng.`);
   };

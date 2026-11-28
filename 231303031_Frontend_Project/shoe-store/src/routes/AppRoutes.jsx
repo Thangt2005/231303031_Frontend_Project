@@ -13,6 +13,7 @@ import {
   Checkout,
   Account,
   Orders,
+  Vouchers,
 } from '../pages';
 
 export default function AppRoutes() {
@@ -25,6 +26,7 @@ export default function AppRoutes() {
         <Route path="cart" element={<Cart />} />
         <Route path="blog" element={<Blog />} />
         <Route path="blog/:slug" element={<BlogDetail />} />
+        <Route path="vouchers" element={<Vouchers />} />
         <Route path="login" element={<Login />} />
 
         <Route element={<ProtectedRoute />}>
