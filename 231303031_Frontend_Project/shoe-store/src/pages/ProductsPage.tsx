@@ -31,8 +31,12 @@ export default function ProductsPage() {
 
     const keyword = (searchParams.get('search') ?? '').trim();
     const brandParam = searchParams.get('brand') ?? '';
+    const categoryParam = searchParams.getAll('category').join(',');
 
     const [brand, setBrand] = useState(brandParam);
+    const [categories, setCategories] = useState<string[]>(
+        categoryParam ? categoryParam.split(',') : []
+    );
     const [price, setPrice] = useState('');
     const [sort, setSort] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
@@ -69,10 +73,15 @@ export default function ProductsPage() {
         setBrand(brandParam);
     }, [brandParam]);
 
+    // Đồng bộ khi bấm link danh mục trên Header: /products?category=Dép
+    useEffect(() => {
+        setCategories(categoryParam ? categoryParam.split(',') : []);
+    }, [categoryParam]);
+
     // Đổi tìm kiếm/lọc/sắp xếp thì quay về trang đầu.
     useEffect(() => {
         setCurrentPage(1);
-    }, [keyword, brand, price, sort]);
+    }, [keyword, brand, categoryParam, price, sort]);
 
     const brands = useMemo(() => getBrands(products), [products]);
 
@@ -85,9 +94,18 @@ export default function ProductsPage() {
             : products;
     }, [products, keyword]);
 
+    // Lọc theo danh mục từ Header trước khi lọc hãng/giá/sắp xếp
+    const categoryProducts = useMemo(() => {
+        if (categories.length === 0) {
+            return searchedProducts;
+        }
+
+        return searchedProducts.filter((product) => categories.includes(product.category));
+    }, [searchedProducts, categories]);
+
     const visibleProducts = useMemo(
-        () => filterAndSortProducts(searchedProducts, { brand, price, sort }),
-        [searchedProducts, brand, price, sort]
+        () => filterAndSortProducts(categoryProducts, { brand, price, sort }),
+        [categoryProducts, brand, price, sort]
     );
 
     const totalPages = Math.max(1, Math.ceil(visibleProducts.length / PAGE_SIZE));
@@ -99,11 +117,13 @@ export default function ProductsPage() {
 
     const handleReset = () => {
         setBrand('');
+        setCategories([]);
         setPrice('');
         setSort('');
 
         const nextParams = new URLSearchParams(searchParams);
         nextParams.delete('brand');
+        nextParams.delete('category');
         setSearchParams(nextParams);
     };
 

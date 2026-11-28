@@ -28,7 +28,7 @@ const menuList: Menu[] = [
   { title: 'Trang chủ', path: '/' },
   {
     title: 'Giày',
-    path: '/products',
+    path: '/products?category=Giày sneaker&category=Giày chạy bộ',
     children: [
       { name: 'Giày sneaker', path: '/products?category=Giày sneaker' },
       { name: 'Giày chạy bộ', path: '/products?category=Giày chạy bộ' },
@@ -36,7 +36,7 @@ const menuList: Menu[] = [
   },
   {
     title: 'Dép & Sandal',
-    path: '/products',
+    path: '/products?category=Dép&category=Sandal&category=Dép sục',
     children: [
       { name: 'Dép', path: '/products?category=Dép' },
       { name: 'Sandal', path: '/products?category=Sandal' },
