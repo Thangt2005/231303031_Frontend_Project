@@ -3,14 +3,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { Product } from '../store/slice/ProductListSlice';
 import type { RootState, AppDispatch } from '../store/store';
 import { addCompare, removeCompare } from '../store/slice/CompareSlice';
+import { addWishlist, removeWishlist } from '../store/slice/WishlistSlice';
+import '../styles/wishlist.css';
 
 export default function ProductItems({ product }: { product: Product }) {
     const dispatch = useDispatch<AppDispatch>();
     const selectedProducts = useSelector((state: RootState) => state.compare.selectedProducts);
+    const wishlistItems = useSelector((state: RootState) => state.wishlist.items);
 
     // Kiểm tra sản phẩm này đã được chọn để so sánh chưa
     const found = selectedProducts.find((item) => item.id === product.id);
     const isSelected = found !== undefined;
+
+    // Kiểm tra sản phẩm này đã có trong danh sách yêu thích chưa
+    const isSaved = wishlistItems.some((item) => item.id === product.id);
 
     // Bấm nút: chưa chọn thì thêm, đã chọn thì bỏ
     function handleCompare() {
@@ -20,6 +26,15 @@ export default function ProductItems({ product }: { product: Product }) {
             alert('Chỉ được chọn tối đa 3 sản phẩm để so sánh.');
         } else {
             dispatch(addCompare(product));
+        }
+    }
+
+    // Bấm nút tim: đã lưu thì bỏ, chưa lưu thì thêm vào wishlist
+    function handleWishlist() {
+        if (isSaved) {
+            dispatch(removeWishlist(product.id));
+        } else {
+            dispatch(addWishlist(product));
         }
     }
 
@@ -40,6 +55,14 @@ export default function ProductItems({ product }: { product: Product }) {
                         <Link to={`/products/${product.id}`} className="btn btn-primary">Xem sản phẩm</Link>
                         <button type="button" className="btn btn-secondary" onClick={handleCompare}>
                             {isSelected ? 'Bỏ so sánh' : 'So sánh'}
+                        </button>
+                        <button
+                            type="button"
+                            className={`wishlist-toggle${isSaved ? ' is-active' : ''}`}
+                            onClick={handleWishlist}
+                            aria-pressed={isSaved}
+                        >
+                            {isSaved ? '♥ Đã lưu' : '♡ Yêu thích'}
                         </button>
                     </div>
                 </div>
