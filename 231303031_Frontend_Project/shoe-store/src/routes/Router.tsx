@@ -11,6 +11,7 @@ import {
   NotFound,
   Checkout,
   Orders,
+  Compare,
 } from '../pages';
 import { Account } from '../pages';
 import Layout from '../layouts/Layout';
@@ -398,6 +399,7 @@ export const router = createBrowserRouter([
       { path: 'products/:id', element: <ProductDetail />, loader: dataLoader },
       { path: 'cart', element: <Cart /> },
       { path: 'blog', element: <Blog /> },
+      { path: 'compare', element: <Compare /> },
       { path: 'login', element: <Login /> },
       { path: 'register', element: <Register /> },
       { path: 'forgot-password', element: <ForgotPassword /> },

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useLocation, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { useAuth } from '../../context/AuthContext';
 import LoginForm from './LoginForm';
 import '../../styles/login.css';
@@ -12,10 +12,11 @@ export default function LoginDropdown() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (location.state?.message) {
+    // Ở trang /login đã có form đăng nhập rồi nên không mở thêm khung này
+    if (location.state?.message && location.pathname !== '/login') {
       setIsOpen(true);
     }
-  }, [location.state]);
+  }, [location.state, location.pathname]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -53,6 +54,14 @@ export default function LoginDropdown() {
         {user ? (
           <div className="login-user-menu">
             <p className="login-user-name">Xin chào, {user.username}</p>
+            <Link
+              to="/account"
+              className="login-submit-btn"
+              style={{ textAlign: 'center', textDecoration: 'none' }}
+              onClick={() => setIsOpen(false)}
+            >
+              Tài khoản của tôi
+            </Link>
             <button
               type="button"
               className="login-logout-btn"
@@ -71,4 +80,3 @@ export default function LoginDropdown() {
     </div>
   );
 }
-

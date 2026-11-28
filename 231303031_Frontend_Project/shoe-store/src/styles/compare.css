@@ -1,0 +1,191 @@
+/* Băng so sánh ở cuối màn hình */
+.compare-bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
+  background-color: #fff;
+  border-top: 2px solid #17654e;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.compare-bar-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.compare-bar-title {
+  margin: 0;
+  font-weight: bold;
+}
+
+.compare-bar-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.compare-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.compare-bar-item img {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+}
+
+.compare-bar-item span {
+  max-width: 160px;
+  font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.compare-bar-item button {
+  padding: 2px 6px;
+  border: none;
+  background: none;
+  color: #b3261e;
+  cursor: pointer;
+}
+
+.compare-bar-note {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Nút chính (So sánh ngay, Chọn sản phẩm) */
+.compare-button {
+  display: inline-block;
+  padding: 9px 18px;
+  border-radius: 5px;
+  background-color: #17654e;
+  color: #fff;
+  text-decoration: none;
+}
+
+.compare-button:hover {
+  background-color: #104c3b;
+}
+
+/* Trang so sánh */
+.compare-page h1 {
+  margin-top: 0;
+}
+
+.compare-note {
+  color: #666;
+}
+
+.compare-table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid #e1e5e9;
+  border-radius: 8px;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  vertical-align: top;
+}
+
+.compare-table th {
+  width: 130px;
+  color: #555;
+  background-color: #f8f8f8;
+}
+
+.compare-table td {
+  min-width: 200px;
+}
+
+.compare-image {
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  height: 140px;
+  margin-bottom: 8px;
+  object-fit: contain;
+}
+
+.compare-name {
+  display: block;
+  margin-bottom: 8px;
+  color: #222;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.compare-name:hover {
+  text-decoration: underline;
+}
+
+.compare-remove {
+  padding: 6px 12px;
+  border: 1px solid #b3261e;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #b3261e;
+  cursor: pointer;
+}
+
+.compare-price {
+  color: #b3261e;
+  font-weight: bold;
+}
+
+.compare-back {
+  color: #17654e;
+  text-decoration: none;
+}
+
+/* Điện thoại */
+@media (max-width: 576px) {
+  .compare-bar-inner {
+    padding: 10px 16px;
+  }
+
+  /* Điện thoại chỉ hiện ảnh nhỏ và nút ✕ cho băng gọn hơn */
+  .compare-bar-item span {
+    display: none;
+  }
+
+  .compare-bar-title,
+  .compare-bar .compare-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .compare-table th {
+    width: 90px;
+  }
+
+  .compare-table td {
+    min-width: 150px;
+  }
+}
