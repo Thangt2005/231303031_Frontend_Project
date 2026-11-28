@@ -7,14 +7,14 @@ type FooterLink = {
 };
 
 const exploreLinks: FooterLink[] = [
-  { name: 'Trang chủ', path: '/' },
-  { name: 'Sản phẩm', path: '/products' },
-  { name: 'Blog về giày', path: '/blog' },
+  { name: 'Trang chủ 🛖', path: '/' },
+  { name: 'Sản phẩm 👟', path: '/products' },
+  { name: 'Blog về giày 🎞️', path: '/blog' },
 ];
 
 const accountLinks: FooterLink[] = [
-  { name: 'Đăng nhập', path: '/login' },
-  { name: 'Giỏ hàng', path: '/cart' },
+  { name: 'Đăng nhập 🚹', path: '/login' },
+  { name: 'Giỏ hàng 🛒', path: '/cart' },
 ];
 
 export default function Footer() {
@@ -35,7 +35,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-column">
-          <h3 className="footer-title">Khám phá</h3>
+          <h3 className="footer-title">Khám phá 🕶️</h3>
           <ul className="footer-list">
             {exploreLinks.map((item) => (
               <li key={item.path}>
@@ -46,7 +46,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-column">
-          <h3 className="footer-title">Tài khoản</h3>
+          <h3 className="footer-title">Tài khoản 🚹</h3>
           <ul className="footer-list">
             {accountLinks.map((item) => (
               <li key={item.path}>
