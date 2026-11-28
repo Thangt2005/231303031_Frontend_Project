@@ -83,8 +83,6 @@ export default function ProductsPage() {
         setCurrentPage(1);
     }, [keyword, brand, categoryParam, price, sort]);
 
-    const brands = useMemo(() => getBrands(products), [products]);
-
     const searchedProducts = useMemo(() => {
         const normalizedKeyword = normalize(keyword);
         return normalizedKeyword
@@ -102,6 +100,9 @@ export default function ProductsPage() {
 
         return searchedProducts.filter((product) => categories.includes(product.category));
     }, [searchedProducts, categories]);
+
+    // Chỉ hiện hãng có sản phẩm trong kết quả tìm kiếm/danh mục hiện tại
+    const brands = useMemo(() => getBrands(categoryProducts), [categoryProducts]);
 
     const visibleProducts = useMemo(
         () => filterAndSortProducts(categoryProducts, { brand, price, sort }),

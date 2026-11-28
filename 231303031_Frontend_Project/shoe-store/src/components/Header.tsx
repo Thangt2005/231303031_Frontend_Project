@@ -106,7 +106,7 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
 
         <Link to="/" className="header-logo" onClick={closeAllMenu}>
           <span className="logo-name">SHOE STORE</span>
-          <span className="logo-slogan">GIÀY CHÍNH HÃNG</span>
+          <span className="logo-slogan">👟GIÀY CHÍNH HÃNG 👟</span>
         </Link>
 
         <div className="header-actions">
