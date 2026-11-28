@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
+import type { RootState } from '../store/store';
 import LoginDropdown from './auth/LoginDropdown';
 import '../styles/header.css';
+import '../styles/wishlist.css';
 
 type HeaderProps = {
   cartCount?: number;
@@ -25,7 +28,7 @@ const menuList: Menu[] = [
   { title: 'Trang chủ', path: '/' },
   {
     title: 'Giày',
-    path: '/products',
+    path: '/products?category=Giày sneaker&category=Giày chạy bộ',
     children: [
       { name: 'Giày sneaker', path: '/products?category=Giày sneaker' },
       { name: 'Giày chạy bộ', path: '/products?category=Giày chạy bộ' },
@@ -33,7 +36,7 @@ const menuList: Menu[] = [
   },
   {
     title: 'Dép & Sandal',
-    path: '/products',
+    path: '/products?category=Dép&category=Sandal&category=Dép sục',
     children: [
       { name: 'Dép', path: '/products?category=Dép' },
       { name: 'Sandal', path: '/products?category=Sandal' },
@@ -58,6 +61,7 @@ const menuList: Menu[] = [
 export default function Header({ cartCount = 0 }: HeaderProps) {
   const { user, logout } = useAuth();
   const { totalItems } = useCart();
+  const wishlistCount = useSelector((state: RootState) => state.wishlist.items.length);
   const [openMenu, setOpenMenu] = useState('');
   const [showSearch, setShowSearch] = useState(false);
   const [keyword, setKeyword] = useState('');
@@ -110,6 +114,30 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
           <div className="hide-mobile">
             <LoginDropdown />
           </div>
+
+          <Link
+            to="/wishlist"
+            className="action-link wishlist-link"
+            aria-label="Danh sách yêu thích"
+            title="Danh sách yêu thích"
+          >
+            <span className="wishlist-icon">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+              </svg>
+
+              <span className="wishlist-count">{wishlistCount}</span>
+            </span>
+          </Link>
 
           <Link to="/cart" className="action-link">
             <span className="hide-mobile">GIỎ HÀNG</span>
@@ -218,7 +246,14 @@ export default function Header({ cartCount = 0 }: HeaderProps) {
               )}
             </li>
           ))}
-
+          {/* Đã đăng nhập thì có thêm link tới trang tài khoản */}
+          {user && (
+            <li className="nav-item show-mobile">
+              <Link to="/account" className="nav-link" onClick={closeAllMenu}>
+                Tài khoản của tôi
+              </Link>
+            </li>
+          )}
           {/* Tài khoản nằm trong menu khi ở điện thoại */}
           <li className="nav-item show-mobile">
             {user ? (

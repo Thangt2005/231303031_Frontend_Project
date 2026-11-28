@@ -12,6 +12,8 @@ import {
   Checkout,
   Orders,
   Vouchers,
+  Compare,
+  Wishlist,
 } from '../pages';
 import { Account } from '../pages';
 import Layout from '../layouts/Layout';
@@ -400,6 +402,8 @@ export const router = createBrowserRouter([
       { path: 'cart', element: <Cart /> },
       { path: 'blog', element: <Blog /> },
       { path: 'vouchers', element: <Vouchers /> },
+      { path: 'compare', element: <Compare /> },
+      { path: 'wishlist', element: <Wishlist /> },
       { path: 'login', element: <Login /> },
       { path: 'register', element: <Register /> },
       { path: 'forgot-password', element: <ForgotPassword /> },

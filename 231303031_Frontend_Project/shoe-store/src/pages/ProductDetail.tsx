@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router';
 import { getProducts } from '../services/productService';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
+import type { RootState, AppDispatch } from '../store/store';
+import { addWishlist, removeWishlist } from '../store/slice/WishlistSlice';
 import '../styles/products.css';
+import '../styles/wishlist.css';
 
 function formatPrice(value: number) {
   return Number(value).toLocaleString('vi-VN') + ' đ';
@@ -13,6 +17,10 @@ export default function ProductDetail() {
   const { id } = useParams();
   const { addToCart } = useCart();
   const { user, openLogin } = useAuth();
+  const dispatch = useDispatch<AppDispatch>();
+  const wishlistItems = useSelector((state: RootState) => state.wishlist.items);
+
+  const isSaved = wishlistItems.some((item) => Number(item.id) === Number(id));
 
   const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -186,6 +194,20 @@ export default function ProductDetail() {
               disabled={Number(product.stock) <= 0}
             >
               {Number(product.stock) > 0 ? 'Thêm vào giỏ hàng' : 'Hết hàng'}
+            </button>
+            <button
+              type="button"
+              className={`wishlist-toggle wishlist-toggle--detail${isSaved ? ' is-active' : ''}`}
+              onClick={() => {
+                if (isSaved) {
+                  dispatch(removeWishlist(Number(id)));
+                } else {
+                  dispatch(addWishlist(product));
+                }
+              }}
+              aria-pressed={isSaved}
+            >
+              {isSaved ? '♥ Đã lưu' : '♡ Lưu yêu thích'}
             </button>
           </div>
 

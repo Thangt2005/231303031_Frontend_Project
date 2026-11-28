@@ -70,6 +70,13 @@ export default function LoginDropdown() {
             <div className="login-user-menu">
               <p className="login-user-name">Xin chào, {user.username}</p>
               <Link
+                to="/account"
+                className="login-menu-link"
+                onClick={closeLogin}
+              >
+                Tài khoản của tôi
+              </Link>
+              <Link
                 to="/orders"
                 className="login-menu-link"
                 onClick={closeLogin}
